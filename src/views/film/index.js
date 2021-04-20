@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from 'prop-types';
 import "./index.css";
 
 const Film = () => {
@@ -19,6 +19,9 @@ const Film = () => {
             </div>
           </div>
           <div className="right-section">
+            <div className="rating-wrapper-contain">
+              Rating: hello rating here
+            </div>
             <div className="director">Directed By : John Hawking</div>
             <div className="producer">Produced By : Corner cole</div>
             <div className="release-date">Released On : 21-44-5890</div>
@@ -70,5 +73,9 @@ const Film = () => {
     </>
   );
 };
+
+Film.propTypes = {
+  children: PropTypes.element
+}
 
 export default Film;

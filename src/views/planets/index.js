@@ -2,7 +2,11 @@ import React from "react";
 import "./index.css";
 
 const Planets = () => {
-  return <></>;
+  return <>
+    <div className="planets-list-container-wrapper">
+      planets list
+    </div>
+  </>;
 };
 
 export default Planets;
