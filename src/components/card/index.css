@@ -1,0 +1,14 @@
+.card-container {
+  position: relative;
+  min-height: 200px;
+  max-width: 40rem;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #282727;
+  color: white;
+}
+
+.card-container .card-description {
+  min-height: 200px;
+}

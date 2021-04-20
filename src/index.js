@@ -12,7 +12,7 @@ import SpeciePage from "./views/specie";
 import VehiclesPage from "./views/vehicles";
 import VehiclePage from "./views/vehicle";
 import FilmsPage from "./views/films";
-import FilmPage from "./views/film";
+import Film from "./views/film";
 import SpaceShipsPage from "./views/spaceships";
 import SpaceShipPage from "./views/spaceship";
 import FavouritesPage from "./views/favourites";
@@ -31,7 +31,7 @@ import {
   filmRoute,
   spaceShipsRoute,
   spaceShipRoute,
-  favouritesRoute,
+  favouriteRoute,
 } from "./route";
 import store from "./redux/store";
 import "./index.css";
@@ -54,10 +54,10 @@ ReactDOM.render(
             <Route path={vehiclesRoute} component={VehiclesPage}></Route>
             <Route path={vehicleRoute} component={VehiclePage}></Route>
             <Route path={filmsRoute} component={FilmsPage}></Route>
-            <Route path={filmRoute} component={FilmPage}></Route>
+            <Route path={filmRoute} component={Film}></Route>
             <Route path={spaceShipsRoute} component={SpaceShipsPage}></Route>
             <Route path={spaceShipRoute} component={SpaceShipPage}></Route>
-            <Route path={favouritesRoute} component={FavouritesPage}></Route>
+            <Route path={favouriteRoute} component={FavouritesPage}></Route>
           </Switch>
         </App>
       </React.StrictMode>

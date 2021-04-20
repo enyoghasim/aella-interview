@@ -1,33 +1,14 @@
-const homeRoute = "/";
-const planetsRoute = "/planet";
-const planetRoute = "/planet/:id";
-const peoplesRoute = "/people";
-const peopleRoute = "/people/:id";
-const speciesRoute = "/species";
-const specieRoute = "/species/:id";
-const vehiclesRoute = "/vehicles";
-const vehicleRoute = "/vehicle/:id";
-const filmsRoute = "/films";
-const filmRoute = "/film/:id";
-const spaceShipsRoute = "/spaceships";
-const spaceShipRoute = "/spaceship/:id";
-const favouritesRoute = "/favourites";
-
-const exportModules = {
-  homeRoute,
-  planetRoute,
-  planetsRoute,
-  peoplesRoute,
-  peopleRoute,
-  speciesRoute,
-  specieRoute,
-  vehiclesRoute,
-  vehicleRoute,
-  filmsRoute,
-  filmRoute,
-  spaceShipsRoute,
-  spaceShipRoute,
-  favouritesRoute,
-};
-
-export default exportModules;
+export const homeRoute = "/";
+export const planetsRoute = "/planet";
+export const planetRoute = "/planet/:id";
+export const peoplesRoute = "/people";
+export const peopleRoute = "/people/:id";
+export const speciesRoute = "/species";
+export const specieRoute = "/species/:id";
+export const vehiclesRoute = "/vehicles";
+export const vehicleRoute = "/vehicle/:id";
+export const filmsRoute = "/films";
+export const filmRoute = "/film/:id";
+export const spaceShipsRoute = "/spaceships";
+export const favouriteRoute = "/favourites";
+export const spaceShipRoute = "/spaceship/:id";

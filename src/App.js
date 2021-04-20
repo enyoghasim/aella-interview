@@ -1,7 +1,14 @@
+import React from "react";
+import Header from "./components/header";
 import "./App.css";
 
-function App({ children }) {
-  return <>{children}</>;
-}
+const App = ({ children }) => {
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
+};
 
 export default App;

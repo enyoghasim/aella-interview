@@ -1,5 +1,23 @@
 .navbar {
+  background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+.navbar .image-area {
+  padding: 20px;
+}
+
+.navigation-area {
+  color: white;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation-area .nav-link {
+  list-style: none;
+  padding: 20px;
 }
