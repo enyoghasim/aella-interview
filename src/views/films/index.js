@@ -4,6 +4,7 @@ import Card from "../../components/card/index";
 import { dataFormat } from "../../util/helpers";
 import { getFilms } from "./redux/thunk";
 import "./index.css";
+import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
 const FilmList = (props) => {
   async function handleAPICallToServer(userData) {
@@ -17,11 +18,13 @@ const FilmList = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllFilms?.results &&
+            {props.getAllFilms?.results?
               props.getAllFilms.results.map((item, index) => (
                 <Card key={index}>
                   <div className="character-header">{item.title}</div>
-                  <div className="character">{item.episode_id}</div>
+                  <div className="character">
+                    EPISODE ID : {item.episode_id}
+                  </div>
                   <div className="character">{item.opening_crawl}</div>
                   <div className="footer-container">
                     <div className="footer-main-item">
@@ -39,7 +42,7 @@ const FilmList = (props) => {
                     <div className="footer-main-item">4</div>
                   </div>
                 </Card>
-              ))}
+              )) : [1, 2, 3, 4, 5, 6].map((item) => (<CardLoder key={item} />))}
           </div>
         </div>
       </div>

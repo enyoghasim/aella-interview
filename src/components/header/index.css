@@ -16,12 +16,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 900px;
 }
 
 .navigation-area .nav-link {
   list-style: none;
-  padding: 1rem;
+  padding: 1rem 0px;
   display: flex;
+  width: inherit;
   justify-content: center;
   align-items: center;
 }
@@ -42,6 +44,15 @@
   justify-content: center;
   width: 100%;
   flex-direction: row-reverse;
+}
+
+.wrapper-dropdown-wrapper{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .btn-link {

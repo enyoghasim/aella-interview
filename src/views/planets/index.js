@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Card from "../../components/card";
 import { getPlanets } from "./redux/thunk";
 import "./index.css";
+import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
 const Planets = (props) => {
   async function handleAPICallToServer(userData) {
@@ -17,7 +18,7 @@ const Planets = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllPlanets?.results &&
+            {props.getAllPlanets?.results ?
               props.getAllPlanets.results.map((item, index) => (
                 <Card key={index}>
                   <div className="character-header">{item.name}</div>
@@ -35,7 +36,7 @@ const Planets = (props) => {
 
                   <div className="character">TERRAIN : {item.terrain}</div>
                 </Card>
-              ))}
+              )):[1, 2, 3, 4, 5, 6].map((item) => (<CardLoder key={item} />))}
           </div>
         </div>
       </div>

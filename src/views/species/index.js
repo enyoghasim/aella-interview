@@ -1,28 +1,57 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import Card from "../../components/card";
-import "./index.css";
+import CardLoder from "../../components/card/skelecton/index.card.skelecton";
+import { getSpecies } from "./redux/thunk";
 
-const Species = () => {
-  return (<>
-    <div className="films-page">
-      <div className="film-details">
-        <div className="details-wrapper">
-          {
-            [1, 2, 3, 4, 5, 6, 7].map((index) => (
-              <Card key={index}>
-                <div className="character-header">Species</div>
-                <div className="character">https://starwars.com/ok.o</div>
-                <div className="character">https://starwars.com/ok.o</div>
-                <div className="character">https://starwars.com/ok.o</div>
-                <div className="character">https://starwars.com/ok.o</div>
-                <div className="character">https://starwars.com/ok.o</div>
-              </Card>
-            ))
-          }
+const Species = (props) => {
+  async function handleAPICallToServer(userData) {
+    await props.fetchSpecies(userData);
+  }
+  useEffect(() => {
+    handleAPICallToServer("species");
+  }, []);
+
+  return (
+    <>
+      <div className="films-page">
+        <div className="film-details">
+          <div className="details-wrapper">
+            {props.getAllSpecies?.results ?
+              props?.getAllSpecies.results.map((item, index) => (
+                <Card key={index}>
+                  <div className="character-header">{item.name}</div>
+                  <div className="character">
+                    CLASSIFICATION : {item.classification}
+                  </div>
+                  <div className="character">
+                    DESIGNATION : {item.designation}
+                  </div>
+                  <div className="character">LANGUAGE : {item.language}</div>
+                  <div className="character">
+                    AVERAGE HEIGHT : {item.average_height}
+                  </div>
+                  <div className="character">
+                    AVERAGE LIFE-SPAN {item.average_lifespan}
+                  </div>
+                </Card>
+              )):[1, 2, 3, 4, 5, 6].map((item) => (<CardLoder key={item} />))}
+          </div>
         </div>
       </div>
-    </div>
-  </>);
+    </>
+  );
 };
 
-export default Species;
+const mapStateToProps = (state) => {
+  return {
+    getAllSpecies: state.speciesReducer.species,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchSpecies: (payload) => dispatch(getSpecies(payload)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Species);

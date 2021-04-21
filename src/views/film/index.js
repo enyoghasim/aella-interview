@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Card from "../../components/card/index";
 import "./index.css";
 
@@ -21,7 +21,12 @@ const Film = () => {
           </div>
           <div className="right-section">
             <div className="rating-wrapper-contain">
-              Rate:{(true) ? (<span class="fa fa-heart checked"></span>) : (<span class="fa fa-heart"></span>)}
+              Rate:
+              {true ? (
+                <span className="fa fa-heart checked"></span>
+              ) : (
+                <span className="fa fa-heart"></span>
+              )}
             </div>
             <div className="director">Directed By : John Hawking</div>
             <div className="producer">Produced By : Corner cole</div>
@@ -44,7 +49,7 @@ const Film = () => {
 };
 
 Film.propTypes = {
-  children: PropTypes.element
-}
+  children: PropTypes.element,
+};
 
 export default Film;
