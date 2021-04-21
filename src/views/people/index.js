@@ -9,7 +9,6 @@ import "./index.css";
 const People = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchPeople(userData);
-    console.log("response here ", props.getAllPeople.results);
   }
   useEffect(() => {
     handleAPICallToServer("people");

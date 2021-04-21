@@ -12,3 +12,10 @@ export const filmRoute = "/film/:id";
 export const spaceShipsRoute = "/spaceships";
 export const favouriteRoute = "/favourites";
 export const spaceShipRoute = "/spaceship/:id";
+
+export const planets = "planets";
+export const people = "people";
+export const species = "species";
+export const films = "films";
+export const starship = "starships";
+export const vehicle = "vehicle";

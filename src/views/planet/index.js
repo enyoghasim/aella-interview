@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import Card from "../../components/card/index";
+import { getPlanet } from "./redux/thunk";
+import { planets } from "../../route";
 import "./index.css";
 
-const Planet = () => {
+const Planet = (props) => {
+  async function handleAPICallToServer(userData) {
+    await props.fetchPlanet(userData);
+  }
+  useEffect(() => {
+    handleAPICallToServer(`${planets}/${props.match.params.id}`);
+  }, []);
   return (
     <>
-      {" "}
       <div className="films-page">
         <div className="film-details">
           <div className="left-section">
-            <div className="header">A New Hope</div>
+            <div className="header">
+              {props.getOnePlanet && props.getOnePlanet.name}
+            </div>
             <div className="film-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
               quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
@@ -48,4 +58,16 @@ const Planet = () => {
   );
 };
 
-export default Planet;
+const mapStateToProps = (state) => {
+  return {
+    getOnePlanet: state.planetReducer.planet,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPlanet: (payload) => dispatch(getPlanet(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Planet);

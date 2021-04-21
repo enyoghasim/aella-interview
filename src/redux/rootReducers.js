@@ -5,7 +5,7 @@ import peopleReducer from "../views/people/redux/reducer";
 import personReducer from "../views/person/redux/reducer";
 import planetReducer from "../views/planet/redux/reducer";
 import planetsReducer from "../views/planets/redux/reducer";
-import spaceShipReducer from "../views/spaceship/redux/reducer";
+import spaceshipReducer from "../views/spaceship/redux/reducer";
 import spaceShipsReducer from "../views/spaceships/redux/reducer";
 import specieReducer from "../views/specie/redux/reducer";
 import speciesReducer from "../views/species/redux/reducer";
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   personReducer,
   planetReducer,
   planetsReducer,
-  spaceShipReducer,
+  spaceshipReducer,
   spaceShipsReducer,
   specieReducer,
   speciesReducer,

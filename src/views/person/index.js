@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import Card from "../../components/card/index";
+import { getPerson } from "./redux/thunk";
+import { people } from "../../route";
 import "./index.css";
 
-const Person = () => {
+const Person = (props) => {
+  async function handleAPICallToServer(userData) {
+    await props.fetchPerson(userData);
+  }
+  useEffect(() => {
+    handleAPICallToServer(`${people}/${props.match.params.id}`);
+  }, []);
   return (
     <>
       <div className="films-page">
         <div className="film-details">
           <div className="left-section">
-            <div className="header">A New Hope</div>
+            <div className="header">
+              {props.getOnePerson && props.getOnePerson.name}
+            </div>
             <div className="film-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
               quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
@@ -47,4 +58,16 @@ const Person = () => {
   );
 };
 
-export default Person;
+const mapStateToProps = (state) => {
+  return {
+    getOnePerson: state.personReducer.person,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPerson: (payload) => dispatch(getPerson(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Person);

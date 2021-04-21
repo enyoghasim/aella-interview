@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Card from "../../components/card/index";
+import { getFilm } from "./redux/thunk";
+import { films } from "../../route";
 import "./index.css";
 
-const Film = () => {
+const Film = (props) => {
+  async function handleAPICallToServer(userData) {
+    await props.fetchFilm(userData);
+  }
+  useEffect(() => {
+    handleAPICallToServer(`${films}/${props.match.params.id}`);
+    console.log(props.getFilm.title);
+  }, []);
   return (
     <>
       <div className="films-page">
         <div className="film-details">
           <div className="left-section">
-            <div className="header">A New Hope</div>
+            <div className="header">{props.getFilm && props.getFilm.title}</div>
             <div className="film-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
               quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
@@ -52,4 +62,15 @@ Film.propTypes = {
   children: PropTypes.element,
 };
 
-export default Film;
+const mapStateToProps = (state) => {
+  return {
+    getFilm: state.filmReducer.film,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchFilm: (payload) => dispatch(getFilm(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Film);

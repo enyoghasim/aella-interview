@@ -1,12 +1,16 @@
 import { SET_FILM } from "./types";
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  film: {},
+};
 
 const filmReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_FILM:
       return {
-         ...state, ...action.payload };
+        ...state,
+        film: action.payload,
+      };
     default:
       return state;
   }
