@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "../../components/card";
+import { getId } from "../../util/helpers";
 import { getSpecies } from "./redux/thunk";
 
 const Species = (props) => {
@@ -19,20 +21,22 @@ const Species = (props) => {
             {props.getAllSpecies?.results &&
               props?.getAllSpecies.results.map((item, index) => (
                 <Card key={index}>
-                  <div className="character-header">{item.name}</div>
-                  <div className="character">
-                    CLASSIFICATION : {item.classification}
-                  </div>
-                  <div className="character">
-                    DESIGNATION : {item.designation}
-                  </div>
-                  <div className="character">LANGUAGE : {item.language}</div>
-                  <div className="character">
-                    AVERAGE HEIGHT : {item.average_height}
-                  </div>
-                  <div className="character">
-                    AVERAGE LIFE-SPAN {item.average_lifespan}
-                  </div>
+                  <Link className="card-link" to={`/specie/${getId(item.url)}`}>
+                    <div className="character-header">{item.name}</div>
+                    <div className="character">
+                      CLASSIFICATION : {item.classification}
+                    </div>
+                    <div className="character">
+                      DESIGNATION : {item.designation}
+                    </div>
+                    <div className="character">LANGUAGE : {item.language}</div>
+                    <div className="character">
+                      AVERAGE HEIGHT : {item.average_height}
+                    </div>
+                    <div className="character">
+                      AVERAGE LIFE-SPAN {item.average_lifespan}
+                    </div>
+                  </Link>
                 </Card>
               ))}
           </div>
