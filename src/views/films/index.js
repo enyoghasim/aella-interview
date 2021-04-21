@@ -39,13 +39,6 @@ const FilmList = (props) => {
                   </div>
                 </Card>
               ))
-
-              (!props.getAllFilms?.results.length) &&
-              [1, 2, 3, 4].map((item) => (
-                <Card key={item}>
-                    hello
-                </Card>
-              ))
             }
           </div>
         </div>
