@@ -1,12 +1,28 @@
-import React, { useEffect } from "react";
-import { getFilms } from "./redux/thunk";
+import React from "react";
+import Card from "../../components/card/index";
 import "./index.css";
 
-const Films = ({ match }) => {
-  useEffect(() => {
-    console.log(getFilms("/films"));
-  }, [match]);
-  return <></>;
+const FilmList = () => {
+  return (
+    <>
+      <div className="films-page">
+        <div className="film-details">
+          <div className="details-wrapper">
+            {[1, 2, 3, 4, 5, 6, 7].map((index) => (
+              <Card key={index}>
+                <div className="character-header">Films</div>
+                <div className="character">https://starwars.com/ok.o</div>
+                <div className="character">https://starwars.com/ok.o</div>
+                <div className="character">https://starwars.com/ok.o</div>
+                <div className="character">https://starwars.com/ok.o</div>
+                <div className="character">https://starwars.com/ok.o</div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
-export default Films;
+export default FilmList;

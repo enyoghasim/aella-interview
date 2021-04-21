@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import Card from "../../components/card/index";
 import "./index.css";
 
 const Film = () => {
@@ -20,7 +21,7 @@ const Film = () => {
           </div>
           <div className="right-section">
             <div className="rating-wrapper-contain">
-              Rating: hello rating here
+              Rate:{(true) ? (<span class="fa fa-heart checked"></span>) : (<span class="fa fa-heart"></span>)}
             </div>
             <div className="director">Directed By : John Hawking</div>
             <div className="producer">Produced By : Corner cole</div>
@@ -28,46 +29,14 @@ const Film = () => {
           </div>
         </div>
         <div className="details-wrapper">
-          <div className="characters-section">
-            <div className="character-header">CHARACTERS</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-          </div>
-          <div className="characters-section">
-            <div className="character-header">Planets</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-          </div>
-          <div className="characters-section">
-            <div className="character-header">Species</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-          </div>
-          <div className="characters-section">
+          <Card>
             <div className="character-header">Vehicles</div>
             <div className="character">https://starwars.com/ok.o</div>
             <div className="character">https://starwars.com/ok.o</div>
             <div className="character">https://starwars.com/ok.o</div>
             <div className="character">https://starwars.com/ok.o</div>
             <div className="character">https://starwars.com/ok.o</div>
-          </div>
-          <div className="characters-section">
-            <div className="character-header">StarShips</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-          </div>
+          </Card>
         </div>
       </div>
     </>
