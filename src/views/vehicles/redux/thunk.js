@@ -9,7 +9,7 @@ export const getVehicles = (url) => {
       // dispatch(setLoading)
       dispatch(setVehicles(data));
     } catch (error) {
-      throw new error(error);
+      return error;
     }
   };
 };

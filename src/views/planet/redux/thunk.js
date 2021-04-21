@@ -9,7 +9,7 @@ export const getPlanet = (url) => {
       // dispatch(setLoading)
       dispatch(setPlanet(data));
     } catch (error) {
-      throw new error(error);
+      return error;
     }
   };
 };

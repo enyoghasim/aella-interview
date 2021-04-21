@@ -11,7 +11,6 @@ import {
   homeRoute,
   peoplesRoute,
   planetsRoute,
-  spaceShipRoute,
   spaceShipsRoute,
   speciesRoute,
   vehiclesRoute,
@@ -21,8 +20,30 @@ const Header = () => {
   return (
     <>
       <div className="navbar">
-        <div className="image-area">
-          <img className="starwars-logo" src={StarWarsLogo} alt="LOGO" />
+        <div className="header-section-wrapper-top-main-md">
+          <div className="image-area">
+            <img className="starwars-logo" src={StarWarsLogo} alt="LOGO" />
+          </div>
+          <button
+            class="Header-link btn-link js-details-target"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+          >
+            <svg
+              height="24"
+              class="octicon octicon-three-bars"
+              viewBox="0 0 16 16"
+              version="1.1"
+              width="24"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"
+              ></path>
+            </svg>
+          </button>
         </div>
         <div className="search-component">
           <label className="search-label-wrapper-contain">
@@ -37,46 +58,46 @@ const Header = () => {
           </label>
         </div>
         <div className="navigation-area">
-          <li className="nav-link">
+          <div className="nav-link">
             <Link className="link-list-item" to={homeRoute}>
               HOME
             </Link>
-          </li>
-          <li className="nav-link">
+          </div>
+          <div className="nav-link">
             <Link className="link-list-item" to={planetsRoute}>
               PLANETS
             </Link>
-          </li>
-          <li className="nav-link">
+          </div>
+          <div className="nav-link">
             <Link className="link-list-item" to={peoplesRoute}>
               PEOPLE
             </Link>
-          </li>
-          <li className="nav-link">
+          </div>
+          <div className="nav-link">
             <Link className="link-list-item" to={filmsRoute}>
               FILMS
             </Link>
-          </li>
-          <li className="nav-link">
+          </div>
+          <div className="nav-link">
             <Link className="link-list-item" to={vehiclesRoute}>
               VEHICLES
             </Link>
-          </li>
-          <li className="nav-link">
+          </div>
+          <div className="nav-link">
             <Link className="link-list-item" to={speciesRoute}>
               SPECIES
             </Link>
-          </li>
-          <li className="nav-link">
+          </div>
+          <div className="nav-link">
             <Link className="link-list-item" to={spaceShipsRoute}>
               SPACESHIPS
             </Link>
-          </li>
-          <li className="nav-link">
+          </div>
+          <div className="nav-link">
             <Link className="link-list-item" to={favouriteRoute}>
               FAVOURITES
             </Link>
-          </li>
+          </div>
         </div>
       </div>
       {/* <Card /> */}

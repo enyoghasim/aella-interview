@@ -20,7 +20,10 @@
 
 .navigation-area .nav-link {
   list-style: none;
-  padding: 20px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link-list-item{
@@ -34,16 +37,29 @@
   display: flex;
   justify-content: center;
 }
+.header-section-wrapper-top-main-md{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+.btn-link {
+  display: none;
+}
+
 .btn-custom-style{
   width: initial;
   height: inherit;
-  padding: .798rem;
+  padding: .779rem;
+  border: none;
   font-weight: bold;
   font-size: 1rem;
 }
 .search-component-input{
   padding: .874rem;
   width: inherit;
+  border: none;
 }
 .search-label-wrapper-contain{
   display: flex;
@@ -52,6 +68,10 @@
   align-items: center;
   width: inherit;
   max-width: 900px;
+}
+
+.octicon-three-bars{
+  fill: #fff;
 }
 
 
@@ -70,11 +90,34 @@
   }
   .navbar .image-area {
     padding: 1rem;
-    width: 8rem;
+    width: 5rem;
   }
 
   .starwars-logo{
     width: inherit;
+  }
+  .header-section-wrapper-top-main-md{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row-reverse;
+  }
+
+  .btn-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-size: inherit;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    margin: 1rem;
+    background-color: initial;
+    border: 0;
+    appearance: none;
+    -moz-appearance: none;
   }
 }
 
@@ -88,12 +131,36 @@
     justify-content: center;
     width: 100%;
   }
+
+  .header-section-wrapper-top-main-md{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row-reverse;
+  }
+
   .navbar .image-area {
     padding: 1rem;
-    width: 8rem;
+    width: 5rem;
   }
 
   .starwars-logo{
     width: inherit;
+  }
+  .btn-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-size: inherit;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    margin: 1rem;
+    background-color: initial;
+    border: 0;
+    appearance: none;
+    -moz-appearance: none;
   }
 }

@@ -9,7 +9,7 @@ export const getSpecies = (url) => {
       // dispatch(setLoading)
       dispatch(setSpecies(data));
     } catch (error) {
-      throw new error(error);
+      return error;
     }
   };
 };

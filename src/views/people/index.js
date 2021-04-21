@@ -24,14 +24,26 @@ const People = (props) => {
                 <Card key={index}>
                   <Link className="card-link" to={`/person/${getId(item.url)}`}>
                     <div className="character-header">{item.name}</div>
-                    <div className="character">GENDER : {item.gender}</div>
-                    <div className="character">BORN ON : {item.birth_year}</div>
-                    <div className="character">HEIGHT : {item.height}</div>
                     <div className="character">
-                      HAIR COLOR : {item.hair_color}
+                      <span>GENDER:</span>
+                      <span className="key-value">{item.gender}</span>
                     </div>
                     <div className="character">
-                      SKIN COLOR : {item.skin_color}
+                      <span>BORN ON:</span>
+                      <span className="key-value">{item.birth_year}</span>
+                    </div>
+                    <div className="character">
+                      <span>HEIGHT:</span>
+                      <span className="key-value">{item.height}</span>
+                    </div>
+                    <div className="character">
+                      <span>HAIR&nbsp;COLOR:</span>
+                      <span className="key-value">{item.hair_color}</span>
+                    </div>
+
+                    <div className="character">
+                      <span>SKIN&nbsp;COLOR:</span>
+                      <span className="key-value">{item.skin_color}</span>
                     </div>
                   </Link>
                 </Card>

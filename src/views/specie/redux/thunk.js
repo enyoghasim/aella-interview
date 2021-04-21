@@ -9,7 +9,7 @@ export const getSpecie = (url) => {
       // dispatch(setLoading)
       dispatch(setSpecie(data));
     } catch (error) {
-      throw new error(error);
+      return error;
     }
   };
 };
