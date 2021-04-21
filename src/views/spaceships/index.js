@@ -21,7 +21,7 @@ const SpaceShips = (props) => {
             {props.getAllSpacehips?.results &&
               props.getAllSpacehips?.results.map((item, index) => (
                 <Card key={index}>
-                  <div className="character-name">
+                  <div className="character-header">
                     MANUFACTURER : {item.name}
                   </div>
                   <div className="character">

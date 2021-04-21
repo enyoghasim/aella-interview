@@ -9,7 +9,7 @@ export const getFilms = (url) => {
       // dispatch(setLoading)
       dispatch(setFilms(data));
     } catch (error) {
-      throw new error(error);
+      return error;
     }
   };
 };
