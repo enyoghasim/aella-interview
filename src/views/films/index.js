@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Card from "../../components/card/index";
 import { dataFormat } from "../../util/helpers";
-import "./index.css";
 import { getFilms } from "./redux/thunk";
+import "./index.css";
 
 const FilmList = (props) => {
   async function handleAPICallToServer(userData) {

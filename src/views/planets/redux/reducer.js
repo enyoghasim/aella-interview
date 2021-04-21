@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 const planetsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_PLANETS:
-      return { ...state, planet: action.payload };
+      return { ...state, planets: action.payload };
     default:
       return state;
   }
