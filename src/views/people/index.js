@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getPeople } from "./redux/thunk";
+import { getId } from "../../util/helpers";
 import Card from "../../components/card";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
@@ -18,10 +20,10 @@ const People = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {
-              props.getAllPeople.results ?
-                props.getAllPeople.results.map((item, index) => (
-                  <Card key={index}>
+            {props.getAllPeople.results ?
+              props.getAllPeople.results.map((item, index) => (
+                <Card key={index}>
+                  <Link className="card-link" to={`/person/${getId(item.url)}`}>
                     <div className="character-header">{item.name}</div>
                     <div className="character">
                       <span>GENDER:</span>
@@ -44,8 +46,9 @@ const People = (props) => {
                       <span className="key-value">
                         {item.skin_color}
                       </span></div>
-                  </Card>
-                )) : [1, 2, 3, 4, 5, 6].map((item) => (<CardLoder key={item} />))
+                  </Link>
+                </Card>
+              )) : [1, 2, 3, 4, 5, 6].map((item) => (<CardLoder key={item} />))
             }
           </div>
         </div>
