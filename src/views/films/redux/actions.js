@@ -1,8 +1,8 @@
 import { SET_FILMS } from "./types";
 
-export const setFilms = (payload) => {
+export const setFilms = (films) => {
   return {
     type: SET_FILMS,
-    payload,
+    films,
   };
 };

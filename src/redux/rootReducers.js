@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import filmReducer from "../views/film/redux/reducer";
-import filmsReducer from "../views/film/redux/reducer";
+import filmsReducer from "../views/films/redux/reducer";
 import peopleReducer from "../views/people/redux/reducer";
 import personReducer from "../views/person/redux/reducer";
 import planetReducer from "../views/planet/redux/reducer";

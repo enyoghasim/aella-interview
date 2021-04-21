@@ -5,13 +5,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import rootReducer from "./rootReducers";
 
-// const loggerServiceModule =
-//   process.env.NODE_ENV === "development"
-//     ? composeWithDevTools(applyMiddleware(thunk, logger))
-//     : null;
+const loggerServiceModule =
+  process.env.NODE_ENV === "development"
+    ? composeWithDevTools(applyMiddleware(thunk, logger))
+    : null;
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, logger))
+  loggerServiceModule
 );
 
 export default store;
