@@ -10,7 +10,6 @@ import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 const People = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchPeople(userData);
-    console.log("response here ", props.getAllPeople.results);
   }
   useEffect(() => {
     handleAPICallToServer("people");
