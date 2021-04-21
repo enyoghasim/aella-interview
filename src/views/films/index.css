@@ -1,0 +1,18 @@
+.footer-container{
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer-main-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px;
+  font-size: .66rem;
+  font-weight: bold;
+  margin: 3px;
+}
+.label-span{
+  margin-right: 4px;
+}
