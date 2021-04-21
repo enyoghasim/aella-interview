@@ -21,7 +21,9 @@ const FilmList = (props) => {
               props.getAllFilms.results.map((item, index) => (
                 <Card key={index}>
                   <div className="character-header">{item.title}</div>
-                  <div className="character">{item.episode_id}</div>
+                  <div className="character">
+                    EPISODE ID : {item.episode_id}
+                  </div>
                   <div className="character">{item.opening_crawl}</div>
                   <div className="footer-container">
                     <div className="footer-main-item">
