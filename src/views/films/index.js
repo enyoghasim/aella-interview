@@ -7,23 +7,23 @@ import { getFilms } from "./redux/thunk";
 const FilmList = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchFilms(userData);
-    console.log("response here ", props.getAllFilms.results);
   }
   useEffect(() => {
     handleAPICallToServer("films");
-  });
+  }, []);
   return (
     <>
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllFilms.results.map((item, index) => (
-              <Card key={index}>
-                <div className="character-header">{item.title}</div>
-                <div className="character">{item.episode_id}</div>
-                <div className="character">{item.opening_crawl}</div>
-              </Card>
-            ))}
+            {props.getAllFilms.results &&
+              props.getAllFilms.results.map((item, index) => (
+                <Card key={index}>
+                  <div className="character-header">{item.title}</div>
+                  <div className="character">{item.episode_id}</div>
+                  <div className="character">{item.opening_crawl}</div>
+                </Card>
+              ))}
           </div>
         </div>
       </div>

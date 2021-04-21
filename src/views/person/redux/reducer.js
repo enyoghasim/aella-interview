@@ -1,11 +1,13 @@
 import { SET_PERSON } from "./types";
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  person: {},
+};
 
 const personReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_PERSON:
-      return { ...state, ...action.payload };
+      return { ...state, person: action.payload };
     default:
       return state;
   }
