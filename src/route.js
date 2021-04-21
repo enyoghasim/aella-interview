@@ -1,5 +1,5 @@
 export const homeRoute = "/";
-export const planetsRoute = "/planet";
+export const planetsRoute = "/planets";
 export const planetRoute = "/planet/:id";
 export const peoplesRoute = "/people";
 export const peopleRoute = "/people/:id";

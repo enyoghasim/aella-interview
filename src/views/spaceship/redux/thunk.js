@@ -9,7 +9,7 @@ export const getSpaceship = (url) => {
       // dispatch(setLoading)
       dispatch(setSpaceship(data));
     } catch (error) {
-      throw new error(error);
+      return error;
     }
   };
 };

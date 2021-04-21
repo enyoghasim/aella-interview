@@ -7,7 +7,6 @@ const INITIAL_STATE = {
 const filmsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_FILMS:
-      console.log(">>>>>",action,"state>>>>", state)
       return { ...state, films: action.films };
     default:
       return state;
