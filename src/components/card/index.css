@@ -1,4 +1,56 @@
-.card-container {
+
+
+.character{
+  font-size: .9rem;
+  color: purple;
+  cursor: pointer;
+}
+
+.card-main-inner-container{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+
+
+.characters-section {
+  min-width: 300px;
+  margin: 0.5rem 0px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 4%), 0px 0px 2px rgb(0 0 0 / 6%), 0px 0px 1px rgb(0 0 0 / 4%);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.characters-section .character-header {
+  font-weight: 600;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+}
+.list-icon-card-main{
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-container-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  margin: 3px;
+  border-radius: 100%;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 4%), 0px 0px 2px rgb(0 0 0 / 6%), 0px 0px 1px rgb(0 0 0 / 4%);
+}
+
+.characters-section .card-container {
+  width: 14rem;
   position: relative;
   min-height: 200px;
   max-width: 40rem;
@@ -9,6 +61,51 @@
   color: white;
 }
 
-.card-container .card-description {
-  min-height: 200px;
+/* tool-tip style */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
 }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media screen and (max-width: 1000px) {
+ 
+}
+
+@media screen and (max-width: 650px) {
+  
+}
+

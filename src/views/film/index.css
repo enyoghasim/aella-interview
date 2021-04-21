@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 1rem 0px;
   width: 100%;
 }
 
@@ -20,36 +21,19 @@
 .film-details .left-section .film-description {
   max-width: 500px;
 }
-
-
-
-.characters-section {
-  min-width: 300px;
-  margin: 0.5rem 0px;
+.fa-heart:before {
+  content: "\f004";
+  padding: 1rem;
+}
+.details-wrapper{
+  width: inherit;
 }
 
-.characters-section .character-header {
-  font-weight: 600;
-  font-size: 1.35rem;
-  text-transform: uppercase;
-}
-
-.characters-section .card-container {
-  width: 14rem;
-  position: relative;
-  min-height: 200px;
-  max-width: 40rem;
-  margin: 5px;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: #282727;
-  color: white;
+.checked {
+  color: red;
 }
 
 @media screen and (max-width: 1000px) {
-  .characters-section {
-    width: 50%;
-  }
   .film-details .left-section {
     width: 60%;
     margin: 1rem 0px;
@@ -66,9 +50,6 @@
 }
 
 @media screen and (max-width: 650px) {
-  .characters-section {
-    width: 100%;
-  }
   .film-details .left-section {
     width: 60%;
     margin: 1rem 0px;

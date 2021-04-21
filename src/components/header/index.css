@@ -29,18 +29,20 @@
 }
 
 .search-component{
-  width: 90%;
+  width: 95%;
   margin: 0px;
   display: flex;
   justify-content: center;
 }
 .btn-custom-style{
-  width: 5rem;
+  width: initial;
   height: inherit;
-  padding: .88rem;
+  padding: .798rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
 .search-component-input{
-  padding: .88rem;
+  padding: .874rem;
   width: inherit;
 }
 .search-label-wrapper-contain{
@@ -66,6 +68,14 @@
     justify-content: center;
     width: 100%;
   }
+  .navbar .image-area {
+    padding: 1rem;
+    width: 8rem;
+  }
+
+  .starwars-logo{
+    width: inherit;
+  }
 }
 
 @media screen and (max-width: 650px) {
@@ -77,5 +87,13 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+  }
+  .navbar .image-area {
+    padding: 1rem;
+    width: 8rem;
+  }
+
+  .starwars-logo{
+    width: inherit;
   }
 }
