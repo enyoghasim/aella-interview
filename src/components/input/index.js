@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './index.css'
-
+import React from "react";
+import PropTypes from "prop-types";
+import "./index.css";
 
 function SEARCHCOMPONENT({
   htmlFor,
@@ -9,20 +8,23 @@ function SEARCHCOMPONENT({
   innerTextLabel,
   inputCustomClass,
   InputType,
-  placeHolder
+  placeHolder,
 }) {
   return (
     <>
-      <input className={`${inputCustomClass} search-input-text catalog-search-bar`} type={InputType} placeholder={placeHolder} />
+      <input
+        className={`${inputCustomClass} search-input-text catalog-search-bar`}
+        type={InputType}
+        placeholder={placeHolder}
+      />
     </>
-  )
+  );
 }
 
 SEARCHCOMPONENT.propTypes = {
-  btnCustomClassName: PropTypes.string.isRequired,
-  innerTextBtn: PropTypes.string.isRequired,
-  handleSubmitAction: PropTypes.func
-}
-
+  btnCustomClassName: PropTypes.string,
+  innerTextBtn: PropTypes.string,
+  handleSubmitAction: PropTypes.func,
+};
 
 export default SEARCHCOMPONENT;
