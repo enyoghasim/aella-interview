@@ -3,14 +3,16 @@ import { connect } from "react-redux";
 import Card from "../../components/card/index";
 import "./index.css";
 import { getVehicle } from "./redux/thunk";
-import { species } from "../../route";
+import { vehicle } from "../../route";
+import CardLoder from "../../components/card/skelecton/index.card.skelecton";
+import { dataFormat } from "../../util/helpers";
 
 const Vehicle = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchVehicle(userData);
   }
   useEffect(() => {
-    handleAPICallToServer(`${species}/${props.match.params.id}`);
+    handleAPICallToServer(`${vehicle}/${props.match.params.id}`);
   }, []);
   return (
     <>
@@ -21,12 +23,13 @@ const Vehicle = (props) => {
               {props.getVehicle && props.getVehicle.name}
             </div>
             <div className="film-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
-              quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
-              exercitationem dolore est reiciendis tempora. Eius architecto esse
-              suscipit deserunt quae numquam unde rem atque, quibusdam, iure
-              voluptate est maiores delectus aliquid distinctio voluptatibus
-              alias. Expedita ducimus ad explicabo dolores earum.
+              <div className="url">Length&nbsp;: {props.getVehicle.length}</div>
+              <div className="max_atmosphering_speed">Max&nbsp;Atmosphering&nbsp;Speed&nbsp;: {props.getVehicle.max_atmosphering_speed}</div>
+              <div className="cost_in_credits">Cost&nbsp;In&nbsp;Credits&nbsp;: {props.getVehicle.cost_in_credits}</div>
+              <div className="consumables">Consumables&nbsp;: {props.getVehicle.consumables}</div>
+              <div className="crew">Crew&nbsp;: {props.getVehicle.crew}</div>
+              <div className="edited">Edited&nbsp;: {dataFormat(props.getVehicle.edited)}</div>
+              <div className="created">Created&nbsp;: {dataFormat(props.getVehicle.created)}</div>
             </div>
           </div>
           <div className="right-section">
@@ -38,20 +41,33 @@ const Vehicle = (props) => {
                 <span className="fa fa-heart"></span>
               )}
             </div>
-            <div className="director">Directed By : John Hawking</div>
-            <div className="producer">Produced By : Corner cole</div>
-            <div className="release-date">Released On : 21-44-5890</div>
+            <div className="url">Url&nbsp;: {props.getVehicle.url}</div>
+            <div className="passengers">Passengers&nbsp;: {props.getVehicle.passengers}</div>
+            <div className="cost_in_credits">Cost&nbsp;In&nbsp;Credits&nbsp;: {props.getVehicle.cost_in_credits}</div>
+            <div className="model">Model&nbsp;: {props.getVehicle.model}</div>
+            <div className="manufacturer">Manufacturer&nbsp;: {props.getVehicle.manufacturer}</div>
+            <div className="vehicle_class">Vehicle&nbsp;Class&nbsp;: {props.getVehicle.vehicle_class}</div>
           </div>
         </div>
         <div className="details-wrapper">
-          <Card>
-            <div className="character-header">Vehicles</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-          </Card>
+          {
+            (props.getVehicle.pilots) ?
+              (<Card>
+                <div className="character-header">Pilots</div>
+                {props.getVehicle.pilots.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+          {
+            (props.getVehicle.films) ?
+              (<Card>
+                <div className="character-header">Films</div>
+                {props.getVehicle.films.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
         </div>
       </div>
     </>

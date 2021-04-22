@@ -5,6 +5,7 @@ import Card from "../../components/card/index";
 import { getFilm } from "./redux/thunk";
 import { films } from "../../route";
 import "./index.css";
+import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
 const Film = (props) => {
   async function handleAPICallToServer(userData) {
@@ -21,12 +22,7 @@ const Film = (props) => {
           <div className="left-section">
             <div className="header">{props.getFilm && props.getFilm.title}</div>
             <div className="film-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
-              quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
-              exercitationem dolore est reiciendis tempora. Eius architecto esse
-              suscipit deserunt quae numquam unde rem atque, quibusdam, iure
-              voluptate est maiores delectus aliquid distinctio voluptatibus
-              alias. Expedita ducimus ad explicabo dolores earum.
+              {props.getFilm && props.getFilm.opening_crawl}
             </div>
           </div>
           <div className="right-section">
@@ -38,20 +34,57 @@ const Film = (props) => {
                 <span className="fa fa-heart"></span>
               )}
             </div>
-            <div className="director">Directed By : John Hawking</div>
-            <div className="producer">Produced By : Corner cole</div>
-            <div className="release-date">Released On : 21-44-5890</div>
+            <div className="episode_id">Episode&nbsp;ID&nbsp;: {props.getFilm.episode_id}</div>
+            <div className="director">Director&nbsp;: {props.getFilm.director}</div>
+            <div className="producer">Producer&nbsp;: {props.getFilm.producer}</div>
           </div>
         </div>
         <div className="details-wrapper">
-          <Card>
-            <div className="character-header">Vehicles</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-          </Card>
+        {
+            (props.getFilm.species) ?
+              (<Card>
+                <div className="character-header">Species</div>
+                {props.getFilm.species.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+          {
+            (props.getFilm.vehicles) ?
+              (<Card>
+                <div className="character-header">Vehicles</div>
+                {props.getFilm.vehicles.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+          {
+            (props.getFilm.starships) ?
+              (<Card>
+                <div className="character-header">Starships</div>
+                {props.getFilm.starships.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+          {
+            (props.getFilm.planets) ?
+              (<Card>
+                <div className="character-header">Planets</div>
+                {props.getFilm.planets.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+          {
+            (props.getFilm.characters) ?
+              (<Card>
+                <div className="character-header">Characters</div>
+                {props.getFilm.characters.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
         </div>
       </div>
     </>
