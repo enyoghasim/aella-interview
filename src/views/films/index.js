@@ -2,12 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "../../components/card/index";
-import {
-  dataFormat,
-  getId,
-  favouitesHandler,
-  checkFavourite,
-} from "../../util/helpers";
+import { dataFormat, getId } from "../../util/helpers";
 import { getFilms } from "./redux/thunk";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
@@ -21,16 +16,12 @@ const FilmList = (props) => {
   }, []);
   return (
     <>
-      <button onClick={() => checkFavourite("ummnmngncnhcnnbc")}>
-        checkset
-      </button>
-      <button onClick={() => favouitesHandler("ummnmngncnhcnnbc")}>set</button>
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
             {props.getAllFilms?.results
               ? props.getAllFilms.results.map((item, index) => (
-                  <Card key={index}>
+                  <Card url={item.url} key={index}>
                     <Link className="card-link" to={`/film/${getId(item.url)}`}>
                       <div className="character-header">{item.title}</div>
                       <div className="character">

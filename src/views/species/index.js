@@ -19,27 +19,33 @@ const Species = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllSpecies?.results ?
-              props?.getAllSpecies.results.map((item, index) => (
-                <Card key={index}>
-                  <Link className="card-link" to={`/specie/${getId(item.url)}`}>
-                    <div className="character-header">{item.name}</div>
-                    <div className="character">
-                      CLASSIFICATION : {item.classification}
-                    </div>
-                    <div className="character">
-                      DESIGNATION : {item.designation}
-                    </div>
-                    <div className="character">LANGUAGE : {item.language}</div>
-                    <div className="character">
-                      AVERAGE HEIGHT : {item.average_height}
-                    </div>
-                    <div className="character">
-                      AVERAGE LIFE-SPAN {item.average_lifespan}
-                    </div>
-                  </Link>
-                </Card>
-              )):[1, 2, 3, 4, 5, 6].map((item) => (<CardLoder key={item} />))}
+            {props.getAllSpecies?.results
+              ? props?.getAllSpecies.results.map((item, index) => (
+                  <Card url={item.url} key={index}>
+                    <Link
+                      className="card-link"
+                      to={`/specie/${getId(item.url)}`}
+                    >
+                      <div className="character-header">{item.name}</div>
+                      <div className="character">
+                        CLASSIFICATION : {item.classification}
+                      </div>
+                      <div className="character">
+                        DESIGNATION : {item.designation}
+                      </div>
+                      <div className="character">
+                        LANGUAGE : {item.language}
+                      </div>
+                      <div className="character">
+                        AVERAGE HEIGHT : {item.average_height}
+                      </div>
+                      <div className="character">
+                        AVERAGE LIFE-SPAN {item.average_lifespan}
+                      </div>
+                    </Link>
+                  </Card>
+                ))
+              : [1, 2, 3, 4, 5, 6].map((item) => <CardLoder key={item} />)}
           </div>
         </div>
       </div>

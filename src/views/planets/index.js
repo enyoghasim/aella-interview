@@ -20,27 +20,33 @@ const Planets = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllPlanets?.results ?
-              props.getAllPlanets.results.map((item, index) => (
-                <Card key={index}>
-                  <Link className="card-link" to={`/planet/${getId(item.url)}`}>
-                    <div className="character-header">{item.name}</div>
-                    <div className="character">
-                      POPULATION : {item.population}
-                    </div>
-                    <div className="character">
-                      ROTATION PERIOD : {item.rotation_period}
-                    </div>
-                    <div className="character">
-                      ORBITAL PERIOD : {item.orbital_period}
-                    </div>
+            {props.getAllPlanets?.results
+              ? props.getAllPlanets.results.map((item, index) => (
+                  <Card url={item.url} key={index}>
+                    <Link
+                      className="card-link"
+                      to={`/planet/${getId(item.url)}`}
+                    >
+                      <div className="character-header">{item.name}</div>
+                      <div className="character">
+                        POPULATION : {item.population}
+                      </div>
+                      <div className="character">
+                        ROTATION PERIOD : {item.rotation_period}
+                      </div>
+                      <div className="character">
+                        ORBITAL PERIOD : {item.orbital_period}
+                      </div>
 
-                    <div className="character">DIAMETER : {item.diameter}</div>
+                      <div className="character">
+                        DIAMETER : {item.diameter}
+                      </div>
 
-                    <div className="character">TERRAIN : {item.terrain}</div>
-                  </Link>
-                </Card>
-              )):[1, 2, 3, 4, 5, 6].map((item) => (<CardLoder key={item} />))}
+                      <div className="character">TERRAIN : {item.terrain}</div>
+                    </Link>
+                  </Card>
+                ))
+              : [1, 2, 3, 4, 5, 6].map((item) => <CardLoder key={item} />)}
           </div>
         </div>
       </div>
