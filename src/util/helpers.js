@@ -23,10 +23,10 @@ export const favouitesHandler = (url) => {
   }
   let push = true;
   favourites.forEach((element) => {
-    if (element !== url) {
+    if (element.url !== url.url) {
       fav.push(element);
     }
-    if (element === url) {
+    if (element.url === url.url) {
       push = false;
     }
   });
@@ -34,7 +34,7 @@ export const favouitesHandler = (url) => {
   localStorage.setItem("favourites", JSON.stringify(fav));
 };
 
-export const checkFavourite = (url) => {
+export const checkFavourite = (item) => {
   const favourite = localStorage.getItem("favourites");
   const favourites = JSON.parse(favourite);
   if (favourites === null) {
@@ -45,7 +45,7 @@ export const checkFavourite = (url) => {
   }
   let push = false;
   favourites.forEach((element) => {
-    if (element === url) {
+    if (element.url === item.url) {
       push = true;
     }
   });
@@ -54,4 +54,13 @@ export const checkFavourite = (url) => {
   } else {
     return false;
   }
+};
+
+export const getFavourites = () => {
+  const favourite = localStorage.getItem("favourites");
+  const favourites = JSON.parse(favourite);
+  if (favourites === null) {
+    return [];
+  }
+  return favourites;
 };

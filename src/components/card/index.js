@@ -1,32 +1,35 @@
 import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { favouitesHandler, checkFavourite } from "../../util/helpers";
 import "./index.css";
 
-const Card = ({ children, url, customClass, withRateIcons }) => {
+const Card = ({ children, item, customClass, withRateIcons }) => {
   const handleClickChange = () => {
     setActive(!active);
-    favouitesHandler(url);
+    favouitesHandler(item);
   };
-  const [active, setActive] = useState(checkFavourite(url));
+  const check = item ? item : "";
+  const [active, setActive] = useState(checkFavourite(check));
   return (
     <>
       <div className="characters-section">
         <div className="card-main-inner-container">
-          {
-            (withRateIcons) &&
-            (<div className="list-icon-card-main">
+          {withRateIcons && (
+            <div className="list-icon-card-main">
               <div className="icon-container-wrapper"></div>
               <div className="icon-container-wrapper"></div>
-              <div className="icon-container-wrapper" onClick={handleClickChange}>
+              <div
+                className="icon-container-wrapper"
+                onClick={handleClickChange}
+              >
                 {active ? (
                   <span className="fa fa-bookmark checked"></span>
                 ) : (
                   <span className="fa fa-bookmark"></span>
                 )}
               </div>
-            </div>)
-          }
+            </div>
+          )}
           <div className="child-main-contain">{children}</div>
         </div>
       </div>
@@ -36,7 +39,7 @@ const Card = ({ children, url, customClass, withRateIcons }) => {
 
 Card.propTypes = {
   children: PropTypes.any.isRequired,
-  withRateIcons: PropTypes.bool
-}
+  withRateIcons: PropTypes.bool,
+};
 
 export default Card;
