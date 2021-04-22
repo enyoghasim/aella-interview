@@ -23,9 +23,9 @@ const Card = ({ children, item, customClass, withRateIcons }) => {
                 onClick={handleClickChange}
               >
                 {active ? (
-                  <span className="fa fa-heart checked"></span>
+                  <span className="fa fa-bookmark checked"></span>
                 ) : (
-                  <span className="fa fa-heart"></span>
+                  <span className="fa fa-bookmark"></span>
                 )}
               </div>
             </div>
