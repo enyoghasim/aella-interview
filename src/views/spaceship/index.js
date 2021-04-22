@@ -4,6 +4,7 @@ import Card from "../../components/card/index";
 import { getSpaceship } from "./redux/thunk";
 import { starship } from "../../route";
 import "./index.css";
+import { dataFormat } from "../../util/helpers";
 
 const SpaceShip = (props) => {
   async function handleAPICallToServer(userData) {
@@ -22,12 +23,11 @@ const SpaceShip = (props) => {
               {props.getOneSpaceShip && props.getOneSpaceShip.name}
             </div>
             <div className="film-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
-              quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
-              exercitationem dolore est reiciendis tempora. Eius architecto esse
-              suscipit deserunt quae numquam unde rem atque, quibusdam, iure
-              voluptate est maiores delectus aliquid distinctio voluptatibus
-              alias. Expedita ducimus ad explicabo dolores earum.
+              <div className="cargo_capacity">Cargo&nbsp;Capacity&nbsp;: {props.getOneSpaceShip.cargo_capacity}</div>
+              <div className="consumables">consumables&nbsp;{props.getOneSpaceShip.consumables}</div>
+              <div className="cost_in_credits">Cost&nbsp;In&nbsp;Credits&nbsp;:{props.getOneSpaceShip.cost_in_credits}</div>
+              <div className="crew">Crew&nbsp;: {props.getOneSpaceShip.crew}</div>
+              <div className="passengers">Passengers&nbsp;On&nbsp;:{props.getOneSpaceShip.passengers}</div>
             </div>
           </div>
           <div className="right-section">
