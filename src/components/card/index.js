@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { favouitesHandler, checkFavourite } from "../../util/helpers";
 import "./index.css";
 
 const Card = ({ children, url, customClass, details }) => {
+  const handleClickChange = () => {
+    setActive(!active);
+    favouitesHandler(url);
+  };
+  const [active, setActive] = useState(checkFavourite(url));
   return (
     <>
       <div className="characters-section">
@@ -10,11 +15,8 @@ const Card = ({ children, url, customClass, details }) => {
           <div className="list-icon-card-main">
             <div className="icon-container-wrapper"></div>
             <div className="icon-container-wrapper"></div>
-            <div
-              className="icon-container-wrapper"
-              onClick={() => favouitesHandler(url)}
-            >
-              {checkFavourite(url) ? (
+            <div className="icon-container-wrapper" onClick={handleClickChange}>
+              {active ? (
                 <span className="fa fa-heart checked"></span>
               ) : (
                 <span className="fa fa-heart"></span>
