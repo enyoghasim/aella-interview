@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "../../components/card/index";
 import { getPlanet } from "./redux/thunk";
-import { planets, planet } from "../../route";
+import { planets, planet, baseUrl, film, person } from "../../route";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
-import { dataFormat } from "../../util/helpers";
+import { dataFormat, getId } from "../../util/helpers";
 
 const Planet = (props) => {
   async function handleAPICallToServer(userData) {
@@ -63,7 +63,10 @@ const Planet = (props) => {
               Terrain:&nbsp;{props.getOnePlanet.terrain}
             </div>
             <div className="terrain">
-              Url:&nbsp;{`${planet}/${props.match.params.id}`}
+              Url:&nbsp;
+              <Link
+                to={`/${planet}/${props.match.params.id}`}
+              >{`${baseUrl}${planet}/${props.match.params.id}`}</Link>
             </div>
           </div>
         </div>
@@ -73,7 +76,9 @@ const Planet = (props) => {
               <div className="character-header">Films</div>
               {props.getOnePlanet.films.map((item, index) => (
                 <div key={index} className="character">
-                  {item}
+                  <Link
+                    to={`/${film}/${getId(item)}`}
+                  >{`${baseUrl}${film}/${getId(item)}`}</Link>
                 </div>
               ))}
             </Card>
@@ -85,7 +90,9 @@ const Planet = (props) => {
               <div className="character-header">Residents</div>
               {props.getOnePlanet.residents.map((item, index) => (
                 <div key={index} className="character">
-                  {item}
+                  <Link
+                    to={`/${person}/${getId(item)}`}
+                  >{`${baseUrl}${person}/${getId(item)}`}</Link>
                 </div>
               ))}
             </Card>

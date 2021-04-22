@@ -1,10 +1,19 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "../../components/card/index";
 import { getPerson } from "./redux/thunk";
-import { people } from "../../route";
+import {
+  people,
+  film,
+  specie,
+  spaceship,
+  vehicles,
+  planet,
+  baseUrl,
+} from "../../route";
 import "./index.css";
-import { dataFormat } from "../../util/helpers";
+import { dataFormat, getId } from "../../util/helpers";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
 const Person = (props) => {
@@ -23,11 +32,21 @@ const Person = (props) => {
               {props.getOnePerson && props.getOnePerson.name}
             </div>
             <div className="film-description">
-              <div className="eye-color">Birth&nbsp;Year&nbsp;: {props.getOnePerson.birth_year}</div>
-              <div className="homeworld">Hair&nbsp;Color:&nbsp;{props.getOnePerson.hair_color}</div>
-              <div className="created-date">Mass&nbsp;:{props.getOnePerson.mass}</div>
-              <div className="height">Edited&nbsp;: {dataFormat(props.getOnePerson.edited)}</div>
-              <div className="created-date">Created&nbsp;On&nbsp;:{dataFormat(props.getOnePerson.created)}</div>
+              <div className="eye-color">
+                Birth&nbsp;Year&nbsp;: {props.getOnePerson.birth_year}
+              </div>
+              <div className="homeworld">
+                Hair&nbsp;Color:&nbsp;{props.getOnePerson.hair_color}
+              </div>
+              <div className="created-date">
+                Mass&nbsp;:{props.getOnePerson.mass}
+              </div>
+              <div className="height">
+                Edited&nbsp;: {dataFormat(props.getOnePerson.edited)}
+              </div>
+              <div className="created-date">
+                Created&nbsp;On&nbsp;:{dataFormat(props.getOnePerson.created)}
+              </div>
             </div>
           </div>
           <div className="right-section">
@@ -39,53 +58,87 @@ const Person = (props) => {
                 <span className="fa fa-heart"></span>
               )}
             </div>
-            <div className="height">Height&nbsp;: {props.getOnePerson.height}</div>
-            <div className="eye-color">Eye&nbsp;Color&nbsp;: {props.getOnePerson.eye_color}</div>
-            <div className="homeworld">Homeworld:&nbsp;{props.getOnePerson.homeworld}</div>
-            <div className="homeworld">Gender:&nbsp;{props.getOnePerson.gender}</div>
-            <div className="created-date">Skin&nbsp;Color&nbsp;:{props.getOnePerson.skin_color}</div>
+            <div className="height">
+              Height&nbsp;: {props.getOnePerson.height}
+            </div>
+            <div className="eye-color">
+              Eye&nbsp;Color&nbsp;: {props.getOnePerson.eye_color}
+            </div>
+            <div className="homeworld">
+              Homeworld:&nbsp;
+              <Link
+                to={`/${planet}/${getId(props.getOnePerson.homeworld)}`}
+              >{`${baseUrl}${planet}/${getId(
+                props.getOnePerson.homeworld
+              )}`}</Link>
+            </div>
+            <div className="homeworld">
+              Gender:&nbsp;{props.getOnePerson.gender}
+            </div>
+            <div className="created-date">
+              Skin&nbsp;Color&nbsp;:{props.getOnePerson.skin_color}
+            </div>
           </div>
         </div>
         <div className="details-wrapper">
-          {
-            (props.getOnePerson.vehicles) ?
-              (<Card>
-                <div className="character-header">Vehicles</div>
-                {props.getOnePerson.vehicles.map((item, index) => (
-                  <div key={index} className="character">{item}</div>
-                ))}
-              </Card>) : <CardLoder />
-          }
-          {
-            (props.getOnePerson.films) ?
-              (<Card>
-                <div className="character-header">Films</div>
-                {props.getOnePerson.films.map((item, index) => (
-                  <div key={index} className="character">{item}</div>
-                ))}
-              </Card>) : <CardLoder />
-          }
+          {props.getOnePerson.vehicles ? (
+            <Card>
+              <div className="character-header">Vehicles</div>
+              {props.getOnePerson.vehicles.map((item, index) => (
+                <div key={index} className="character">
+                  <Link
+                    to={`/${vehicles}/${getId(item)}`}
+                  >{`${baseUrl}${vehicles}/${getId(item)}`}</Link>
+                </div>
+              ))}
+            </Card>
+          ) : (
+            <CardLoder />
+          )}
+          {props.getOnePerson.films ? (
+            <Card>
+              <div className="character-header">Films</div>
+              {props.getOnePerson.films.map((item, index) => (
+                <div key={index} className="character">
+                  <Link
+                    to={`/${film}/${getId(item)}`}
+                  >{`${baseUrl}${film}/${getId(item)}`}</Link>
+                </div>
+              ))}
+            </Card>
+          ) : (
+            <CardLoder />
+          )}
 
+          {props.getOnePerson.starships ? (
+            <Card>
+              <div className="character-header">Starships</div>
+              {props.getOnePerson.starships.map((item, index) => (
+                <div key={index} className="character">
+                  <Link
+                    to={`/${spaceship}/${getId(item)}`}
+                  >{`${baseUrl}${spaceship}/${getId(item)}`}</Link>
+                </div>
+              ))}
+            </Card>
+          ) : (
+            <CardLoder />
+          )}
 
-          {
-            (props.getOnePerson.starships) ?
-              (<Card>
-                <div className="character-header">Starships</div>
-                {props.getOnePerson.starships.map((item, index) => (
-                  <div key={index} className="character">{item}</div>
-                ))}
-              </Card>) : <CardLoder />
-          }
-
-          {
-            (props.getOnePerson.species) ?
-              (<Card>
-                <div className="character-header">Species</div>
-                {props.getOnePerson.species.map((item, index) => (
-                  <div key={index} className="character">{item}</div>
-                ))}
-              </Card>) : <CardLoder />
-          }
+          {props.getOnePerson.species ? (
+            <Card>
+              <div className="character-header">Species</div>
+              {props.getOnePerson.species.map((item, index) => (
+                <div key={index} className="character">
+                  <Link
+                    to={`/${specie}/${getId(item)}`}
+                  >{`${baseUrl}${specie}/${getId(item)}`}</Link>
+                </div>
+              ))}
+            </Card>
+          ) : (
+            <CardLoder />
+          )}
         </div>
       </div>
     </>
