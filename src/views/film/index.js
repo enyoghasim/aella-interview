@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Card from "../../components/card/index";
 import { getFilm } from "./redux/thunk";
-import { getId } from "../../util/helpers";
+import { getId, checkFavourite, favouitesHandler } from "../../util/helpers";
 import {
   films,
+  film,
   specie,
   vehicles,
   spaceship,
   planet,
   person,
-  baseUrl,
 } from "../../route";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
@@ -21,40 +21,60 @@ const Film = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchFilm(userData);
   }
+  const [item, setItem] = useState({});
+  const handleClickChange = () => {
+    setActive(!active);
+    favouitesHandler(item);
+  };
+  const [active, setActive] = useState(false);
+
   useEffect(() => {
     handleAPICallToServer(`${films}/${props.match.params.id}`);
-    console.log(props.getFilm.title);
+    console.log(">>>>>>>>", props);
+    // setActive(checkFavourite(props.getFilm));
+    // console.log(">>fav", checkFavourite(check));
+    console.log("this is the item>>", item);
   }, []);
   return (
     <>
       <div className="films-page">
-        <div className="film-details">
-          <div className="left-section">
-            <div className="header">{props.getFilm && props.getFilm.title}</div>
-            <div className="film-description">
-              {props.getFilm && props.getFilm.opening_crawl}
+        {props.getFilm.title && (
+          <div className="film-details">
+            <div className="left-section">
+              <div className="header">
+                {props.getFilm && props.getFilm.title}
+              </div>
+              <div className="film-description">
+                {props.getFilm && props.getFilm.opening_crawl}
+              </div>
+            </div>
+            <div className="right-section">
+              <div className="rating-wrapper-contain">
+                Rate:
+                {active ? (
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark checked"
+                  ></span>
+                ) : (
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark"
+                  ></span>
+                )}
+              </div>
+              <div className="episode_id">
+                Episode&nbsp;ID&nbsp;: {props.getFilm.episode_id}
+              </div>
+              <div className="director">
+                Director&nbsp;: {props.getFilm.director}
+              </div>
+              <div className="producer">
+                Producer&nbsp;: {props.getFilm.producer}
+              </div>
             </div>
           </div>
-          <div className="right-section">
-            <div className="rating-wrapper-contain">
-              Rate:
-              {true ? (
-                <span className="fa fa-bookmark checked"></span>
-              ) : (
-                <span className="fa fa-bookmark"></span>
-              )}
-            </div>
-            <div className="episode_id">
-              Episode&nbsp;ID&nbsp;: {props.getFilm.episode_id}
-            </div>
-            <div className="director">
-              Director&nbsp;: {props.getFilm.director}
-            </div>
-            <div className="producer">
-              Producer&nbsp;: {props.getFilm.producer}
-            </div>
-          </div>
-        </div>
+        )}
         <div className="details-wrapper">
           {props.getFilm.species ? (
             <Card>

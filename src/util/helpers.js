@@ -37,6 +37,7 @@ export const favouitesHandler = (url) => {
 export const checkFavourite = (item) => {
   const favourite = localStorage.getItem("favourites");
   const favourites = JSON.parse(favourite);
+  console.log(favourites);
   if (favourites === null) {
     return false;
   }
@@ -45,6 +46,7 @@ export const checkFavourite = (item) => {
   }
   let push = false;
   favourites.forEach((element) => {
+    console.log(element.url, ">>>", item.url);
     if (element.url === item.url) {
       push = true;
     }

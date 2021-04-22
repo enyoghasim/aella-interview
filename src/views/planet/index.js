@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "../../components/card/index";
 import { getPlanet } from "./redux/thunk";
-import { planets, planet, baseUrl, film, person } from "../../route";
+import { planets, planet, film, person } from "../../route";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 import { dataFormat, getId } from "../../util/helpers";
@@ -18,58 +18,60 @@ const Planet = (props) => {
   return (
     <>
       <div className="films-page">
-        <div className="film-details">
-          <div className="left-section">
-            <div className="header">
-              {props.getOnePlanet && props.getOnePlanet.name}
+        {props.getOnePlanet.name && (
+          <div className="film-details">
+            <div className="left-section">
+              <div className="header">
+                {props.getOnePlanet && props.getOnePlanet.name}
+              </div>
+              <div className="film-description">
+                <div className="climate">
+                  Climate&nbsp;: {props.getOnePlanet.climate}
+                </div>
+                <div className="diameter">
+                  Diameter: {props.getOnePlanet.diameter}
+                </div>
+                <div className="gravity">
+                  Gravity:&nbsp;{props.getOnePlanet.gravity}
+                </div>
+                <div className="orbital_period">
+                  Orbital&nbsp;Period:&nbsp;{props.getOnePlanet.orbital_period}
+                </div>
+                <div className="created">
+                  Created:&nbsp;{dataFormat(props.getOnePlanet.created)}
+                </div>
+                <div className="edited">
+                  Edited:{dataFormat(props.getOnePlanet.edited)}
+                </div>
+              </div>
             </div>
-            <div className="film-description">
+            <div className="right-section">
+              <div className="rating-wrapper-contain">
+                Rate:
+                {true ? (
+                  <span className="fa fa-bookmark checked"></span>
+                ) : (
+                  <span className="fa fa-bookmark"></span>
+                )}
+              </div>
               <div className="climate">
                 Climate&nbsp;: {props.getOnePlanet.climate}
               </div>
-              <div className="diameter">
-                Diameter: {props.getOnePlanet.diameter}
+              <div className="surface_water">
+                Surface Water: {props.getOnePlanet.surface_water}
               </div>
-              <div className="gravity">
-                Gravity:&nbsp;{props.getOnePlanet.gravity}
+              <div className="terrain">
+                Terrain:&nbsp;{props.getOnePlanet.terrain}
               </div>
-              <div className="orbital_period">
-                Orbital&nbsp;Period:&nbsp;{props.getOnePlanet.orbital_period}
-              </div>
-              <div className="created">
-                Created:&nbsp;{dataFormat(props.getOnePlanet.created)}
-              </div>
-              <div className="edited">
-                Edited:{dataFormat(props.getOnePlanet.edited)}
+              <div className="terrain">
+                Url:&nbsp;
+                <Link to={`/${planet}/${props.match.params.id}`}>
+                  {props.getOnePlanet.url}
+                </Link>
               </div>
             </div>
           </div>
-          <div className="right-section">
-            <div className="rating-wrapper-contain">
-              Rate:
-              {true ? (
-                <span className="fa fa-bookmark checked"></span>
-              ) : (
-                <span className="fa fa-bookmark"></span>
-              )}
-            </div>
-            <div className="climate">
-              Climate&nbsp;: {props.getOnePlanet.climate}
-            </div>
-            <div className="surface_water">
-              Surface Water: {props.getOnePlanet.surface_water}
-            </div>
-            <div className="terrain">
-              Terrain:&nbsp;{props.getOnePlanet.terrain}
-            </div>
-            <div className="terrain">
-              Url:&nbsp;
-              <Link to={`/${planet}/${props.match.params.id}`}>
-                {props.getOnePlanet.url}
-              </Link>
-            </div>
-          </div>
-        </div>
+        )}
         <div className="details-wrapper">
           {props.getOnePlanet?.films ? (
             <Card>
