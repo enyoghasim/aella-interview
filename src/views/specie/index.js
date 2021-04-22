@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../../components/card/index";
+import { getSpecie } from "./redux/thunk";
+import { species } from "../../route";
 import "./index.css";
+import { connect } from "react-redux";
 
-const Specie = () => {
+const Specie = (props) => {
+  async function handleAPICallToServer(userData) {
+    await props.fetchSpecie(userData);
+  }
+  useEffect(() => {
+    handleAPICallToServer(`${species}/${props.match.params.id}`);
+  }, []);
   return (
     <>
       <div className="films-page">
         <div className="film-details">
           <div className="left-section">
-            <div className="header">A New Hope</div>
+            <div className="header">
+              {props.getSpecie && props.getSpecie.name}
+            </div>
             <div className="film-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
               quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
@@ -47,4 +58,16 @@ const Specie = () => {
   );
 };
 
-export default Specie;
+const mapStateToProps = (state) => {
+  return {
+    getSpecie: state.specieReducer.specie,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchSpecie: (payload) => dispatch(getSpecie(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Specie);

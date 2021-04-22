@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
+import { favouitesHandler, checkFavourite } from "../../util/helpers";
 import "./index.css";
 
-const Card = ({ children, withRateIcons, details }) => {
+const Card = ({ children, url, customClass, withRateIcons }) => {
+  const handleClickChange = () => {
+    setActive(!active);
+    favouitesHandler(url);
+  };
+  const [active, setActive] = useState(checkFavourite(url));
   return (
     <>
       <div className="characters-section">
@@ -12,8 +18,8 @@ const Card = ({ children, withRateIcons, details }) => {
             (<div className="list-icon-card-main">
               <div className="icon-container-wrapper"></div>
               <div className="icon-container-wrapper"></div>
-              <div className="icon-container-wrapper">
-                {true ? (
+              <div className="icon-container-wrapper" onClick={handleClickChange}>
+                {active ? (
                   <span className="fa fa-heart checked"></span>
                 ) : (
                   <span className="fa fa-heart"></span>

@@ -19,33 +19,34 @@ const FilmList = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllFilms?.results?
-              props.getAllFilms.results.map((item, index) => (
-                <Card key={index}>
-                  <Link className="card-link" to={`/film/${getId(item.url)}`}>
-                    <div className="character-header">{item.title}</div>
-                    <div className="character">
-                      EPISODE ID : {item.episode_id}
-                    </div>
-                    <div className="character">{item.opening_crawl}</div>
-                    <div className="footer-container">
-                      <div className="footer-main-item">
-                        <span className="label-span">Created:</span>
-                        {dataFormat(item.created)}
+            {props.getAllFilms?.results
+              ? props.getAllFilms.results.map((item, index) => (
+                  <Card url={item.url} key={index}>
+                    <Link className="card-link" to={`/film/${getId(item.url)}`}>
+                      <div className="character-header">{item.title}</div>
+                      <div className="character">
+                        EPISODE ID : {item.episode_id}
                       </div>
-                      <div className="footer-main-item">
-                        <span className="label-span">Director:</span>
-                        {item.director}
+                      <div className="character">{item.opening_crawl}</div>
+                      <div className="footer-container">
+                        <div className="footer-main-item">
+                          <span className="label-span">Created:</span>
+                          {dataFormat(item.created)}
+                        </div>
+                        <div className="footer-main-item">
+                          <span className="label-span">Director:</span>
+                          {item.director}
+                        </div>
+                        <div className="footer-main-item">
+                          <span className="label-span">Producer:</span>
+                          {item.producer}
+                        </div>
+                        <div className="footer-main-item">4</div>
                       </div>
-                      <div className="footer-main-item">
-                        <span className="label-span">Producer:</span>
-                        {item.producer}
-                      </div>
-                      <div className="footer-main-item">4</div>
-                    </div>
-                  </Link>
-                </Card>
-              )) : [1, 2, 3, 4, 5, 6].map((item) => (<CardLoder key={item} />))}
+                    </Link>
+                  </Card>
+                ))
+              : [1, 2, 3, 4, 5, 6].map((item) => <CardLoder key={item} />)}
           </div>
         </div>
       </div>
