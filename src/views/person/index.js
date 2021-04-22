@@ -4,6 +4,8 @@ import Card from "../../components/card/index";
 import { getPerson } from "./redux/thunk";
 import { people } from "../../route";
 import "./index.css";
+import { dataFormat } from "../../util/helpers";
+import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
 const Person = (props) => {
   async function handleAPICallToServer(userData) {
@@ -21,12 +23,11 @@ const Person = (props) => {
               {props.getOnePerson && props.getOnePerson.name}
             </div>
             <div className="film-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
-              quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
-              exercitationem dolore est reiciendis tempora. Eius architecto esse
-              suscipit deserunt quae numquam unde rem atque, quibusdam, iure
-              voluptate est maiores delectus aliquid distinctio voluptatibus
-              alias. Expedita ducimus ad explicabo dolores earum.
+              <div className="eye-color">Birth&nbsp;Year&nbsp;: {props.getOnePerson.birth_year}</div>
+              <div className="homeworld">Hair&nbsp;Color:&nbsp;{props.getOnePerson.hair_color}</div>
+              <div className="created-date">Mass&nbsp;:{props.getOnePerson.mass}</div>
+              <div className="height">Edited&nbsp;: {dataFormat(props.getOnePerson.edited)}</div>
+              <div className="created-date">Created&nbsp;On&nbsp;:{dataFormat(props.getOnePerson.created)}</div>
             </div>
           </div>
           <div className="right-section">
@@ -38,20 +39,53 @@ const Person = (props) => {
                 <span className="fa fa-heart"></span>
               )}
             </div>
-            <div className="director">Directed By : John Hawking</div>
-            <div className="producer">Produced By : Corner cole</div>
-            <div className="release-date">Released On : 21-44-5890</div>
+            <div className="height">Height&nbsp;: {props.getOnePerson.height}</div>
+            <div className="eye-color">Eye&nbsp;Color&nbsp;: {props.getOnePerson.eye_color}</div>
+            <div className="homeworld">Homeworld:&nbsp;{props.getOnePerson.homeworld}</div>
+            <div className="homeworld">Gender:&nbsp;{props.getOnePerson.gender}</div>
+            <div className="created-date">Skin&nbsp;Color&nbsp;:{props.getOnePerson.skin_color}</div>
           </div>
         </div>
         <div className="details-wrapper">
-          <Card>
-            <div className="character-header">Vehicles</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-          </Card>
+          {
+            (props.getOnePerson.vehicles) ?
+              (<Card>
+                <div className="character-header">Vehicles</div>
+                {props.getOnePerson.vehicles.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+          {
+            (props.getOnePerson.films) ?
+              (<Card withRateIcons={true}>
+                <div className="character-header">Films</div>
+                {props.getOnePerson.films.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+
+
+          {
+            (props.getOnePerson.starships) ?
+              (<Card>
+                <div className="character-header">Starships</div>
+                {props.getOnePerson.starships.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+
+          {
+            (props.getOnePerson.species) ?
+              (<Card>
+                <div className="character-header">Species</div>
+                {props.getOnePerson.species.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
         </div>
       </div>
     </>

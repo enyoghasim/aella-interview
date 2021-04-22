@@ -8,8 +8,8 @@ export const getPeople = (url) => {
       const { data } = await Axios.handleGetRequest(url);
       // dispatch(setLoading)
       dispatch(setPeople(data));
-    } catch (error) {
-      throw new error(error);
+    } catch (err) {
+      return err;
     }
   };
 };

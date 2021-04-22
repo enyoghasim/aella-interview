@@ -7,7 +7,7 @@ class Axios {
       console.log(response);
       return response;
     } catch (err) {
-      throw new Error(err);
+      return err;
     }
   };
 
@@ -16,7 +16,7 @@ class Axios {
       const { data } = await API.post(`users/${path}`, payload);
       return data;
     } catch (err) {
-      throw new Error(err);
+      return err;
     }
   };
   static handleDeleteRequest = async (payload) => {
@@ -24,7 +24,7 @@ class Axios {
       const { data } = await API.delete(`users/${payload}`);
       return data;
     } catch (err) {
-      throw new Error(err);
+      return err;
     }
   };
 }

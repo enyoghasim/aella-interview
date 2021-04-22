@@ -19,11 +19,9 @@
 .characters-section {
   min-width: 300px;
   margin: 0.5rem 0px;
-  background: #ffffff;
-  box-shadow: 0px 4px 8px rgb(0 0 0 / 4%), 0px 0px 2px rgb(0 0 0 / 6%),
-    0px 0px 1px rgb(0 0 0 / 4%);
   padding: 1rem;
   border-radius: 4px;
+  border: solid 1px #c5c5c5;
 }
 
 .characters-section .character-header {
@@ -49,6 +47,7 @@
   margin: 3px;
   border-radius: 100%;
   cursor: pointer;
+  border: solid 1px #c5c5c5;
   box-shadow: 0px 4px 8px rgb(0 0 0 / 4%), 0px 0px 2px rgb(0 0 0 / 6%),
     0px 0px 1px rgb(0 0 0 / 4%);
 }

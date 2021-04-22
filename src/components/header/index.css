@@ -79,6 +79,7 @@
   align-items: center;
   width: inherit;
   max-width: 900px;
+  padding: 3px;
 }
 
 .octicon-three-bars{
