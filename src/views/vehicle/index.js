@@ -36,9 +36,9 @@ const Vehicle = (props) => {
             <div className="rating-wrapper-contain">
               Rate:
               {true ? (
-                <span className="fa fa-heart checked"></span>
+                <span className="fa fa-bookmark checked"></span>
               ) : (
-                <span className="fa fa-heart"></span>
+                <span className="fa fa-bookmark"></span>
               )}
             </div>
             <div className="url">Url&nbsp;: {props.getVehicle.url}</div>

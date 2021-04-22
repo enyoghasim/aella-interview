@@ -23,10 +23,10 @@ const Person = (props) => {
               {props.getOnePerson && props.getOnePerson.name}
             </div>
             <div className="film-description">
-              <div className="eye-color">Birth&nbsp;Year&nbsp;: {props.getOnePerson.birth_year}</div>
-              <div className="homeworld">Hair&nbsp;Color:&nbsp;{props.getOnePerson.hair_color}</div>
+              <div className="birth">Birth&nbsp;Year&nbsp;: {props.getOnePerson.birth_year}</div>
+              <div className="hair">Hair&nbsp;Color:&nbsp;{props.getOnePerson.hair_color}</div>
               <div className="created-date">Mass&nbsp;:{props.getOnePerson.mass}</div>
-              <div className="height">Edited&nbsp;: {dataFormat(props.getOnePerson.edited)}</div>
+              <div className="edited">Edited&nbsp;: {dataFormat(props.getOnePerson.edited)}</div>
               <div className="created-date">Created&nbsp;On&nbsp;:{dataFormat(props.getOnePerson.created)}</div>
             </div>
           </div>
@@ -34,9 +34,9 @@ const Person = (props) => {
             <div className="rating-wrapper-contain">
               Rate:
               {true ? (
-                <span className="fa fa-heart checked"></span>
+                <span className="fa fa-bookmark checked"></span>
               ) : (
-                <span className="fa fa-heart"></span>
+                <span className="fa fa-bookmark"></span>
               )}
             </div>
             <div className="height">Height&nbsp;: {props.getOnePerson.height}</div>

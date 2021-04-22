@@ -21,8 +21,8 @@
 .film-details .left-section .film-description {
   max-width: 500px;
 }
-.fa-heart:before {
-  content: "\f004";
+.fa-bookmark:before {
+  content: "\f02e";
   padding: 1rem;
 }
 .details-wrapper{
