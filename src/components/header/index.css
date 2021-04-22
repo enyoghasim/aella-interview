@@ -28,25 +28,25 @@
   align-items: center;
 }
 
-.link-list-item{
+.link-list-item {
   text-decoration: none;
   color: #fff;
 }
 
-.search-component{
+.search-component {
   width: 95%;
   margin: 0px;
   display: flex;
   justify-content: center;
 }
-.header-section-wrapper-top-main-md{
+.header-section-wrapper-top-main-md {
   display: flex;
   justify-content: center;
   width: 100%;
   flex-direction: row-reverse;
 }
 
-.wrapper-dropdown-wrapper{
+.wrapper-dropdown-wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -59,36 +59,46 @@
   display: none;
 }
 
-.btn-custom-style{
+.btn-custom-style {
   width: initial;
   height: inherit;
-  padding: .779rem;
+  padding: 0.779rem;
   border: none;
   font-weight: bold;
   font-size: 1rem;
 }
-.search-component-input{
-  padding: .874rem;
+.search-component-input {
+  padding: 0.874rem;
   width: inherit;
   border: none;
 }
-.search-label-wrapper-contain{
+
+.search-label-wrapper-contain {
   display: flex;
+  position: relative;
   flex-direction: row-reverse;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   width: inherit;
   max-width: 900px;
   padding: 3px;
 }
-
-.octicon-three-bars{
-  fill: #fff;
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 99%;
+  height: 159px;
+  margin: auto;
+  top: 47px;
+  z-index: 99;
+  background: red;
 }
 
-
-
-
+.octicon-three-bars {
+  fill: #fff;
+}
 
 @media screen and (max-width: 1000px) {
   .navigation-area {
@@ -105,10 +115,10 @@
     width: 5rem;
   }
 
-  .starwars-logo{
+  .starwars-logo {
     width: inherit;
   }
-  .header-section-wrapper-top-main-md{
+  .header-section-wrapper-top-main-md {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -144,7 +154,7 @@
     width: 100%;
   }
 
-  .header-section-wrapper-top-main-md{
+  .header-section-wrapper-top-main-md {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -156,7 +166,7 @@
     width: 5rem;
   }
 
-  .starwars-logo{
+  .starwars-logo {
     width: inherit;
   }
   .btn-link {

@@ -5,7 +5,11 @@ import { getFavourites, getId } from "../../util/helpers";
 import "./index.css";
 
 const Favourites = () => {
+  const [time, setTime] = useState(Date.now());
   const [favourites, setFavourites] = useState(getFavourites());
+  const reRender = () => {
+    setTime(Date.now());
+  };
   return (
     <>
       <div className="films-page">
@@ -13,7 +17,12 @@ const Favourites = () => {
           <div className="details-wrapper">
             {favourites.length ? (
               favourites.map((item, index) => (
-                <Card withRateIcons={true} item={item} key={index}>
+                <Card
+                  reRender={reRender}
+                  withRateIcons={true}
+                  item={item}
+                  key={index}
+                >
                   <Link
                     className="card-link"
                     to={`${item.type}/${getId(item.url)}`}

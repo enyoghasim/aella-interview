@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 // import Card from "../card";
 import "./index.css";
 import StarWarsLogo from "../../Asset/image/starwarslogo.png";
@@ -48,34 +48,57 @@ const Header = () => {
         <div className="wrapper-dropdown-wrapper">
           <div className="search-component">
             <label className="search-label-wrapper-contain">
-              <ButtonComponent btnCustomClassName="btn-custom-style" innerTextBtn="Search..." />
-              <SearchComponent inputCustomClass="search-component-input" placeHolder="Search..." />
+              <ButtonComponent
+                btnCustomClassName="btn-custom-style"
+                innerTextBtn="Search..."
+              />
+              <SearchComponent
+                inputCustomClass="search-component-input"
+                placeHolder="Search..."
+              />
+              <div className="dropdown"></div>
             </label>
           </div>
           <div className="navigation-area">
             <div className="nav-link">
-              <Link className="link-list-item" to={homeRoute}>HOME</Link>
+              <Link className="link-list-item" to={homeRoute}>
+                HOME
+              </Link>
             </div>
             <div className="nav-link">
-              <Link className="link-list-item" to={planetsRoute}>PLANETS</Link>
+              <Link className="link-list-item" to={planetsRoute}>
+                PLANETS
+              </Link>
             </div>
             <div className="nav-link">
-              <Link className="link-list-item" to={peoplesRoute}>PEOPLE</Link>
+              <Link className="link-list-item" to={peoplesRoute}>
+                PEOPLE
+              </Link>
             </div>
             <div className="nav-link">
-              <Link className="link-list-item" to={filmsRoute}>FILMS</Link>
+              <Link className="link-list-item" to={filmsRoute}>
+                FILMS
+              </Link>
             </div>
             <div className="nav-link">
-              <Link className="link-list-item" to={vehiclesRoute}>VEHICLES</Link>
+              <Link className="link-list-item" to={vehiclesRoute}>
+                VEHICLES
+              </Link>
             </div>
             <div className="nav-link">
-              <Link className="link-list-item" to={speciesRoute}>SPECIES</Link>
+              <Link className="link-list-item" to={speciesRoute}>
+                SPECIES
+              </Link>
             </div>
             <div className="nav-link">
-              <Link className="link-list-item" to={spaceShipsRoute}>SPACESHIPS</Link>
+              <Link className="link-list-item" to={spaceShipsRoute}>
+                SPACESHIPS
+              </Link>
             </div>
             <div className="nav-link">
-              <Link className="link-list-item" to={favouriteRoute}>FAVOURITES</Link>
+              <Link className="link-list-item" to={favouriteRoute}>
+                FAVOURITES
+              </Link>
             </div>
           </div>
         </div>
