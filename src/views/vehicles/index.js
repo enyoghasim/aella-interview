@@ -22,7 +22,7 @@ const Vehicles = (props) => {
           <div className="details-wrapper">
             {props?.getAllVehicles.results
               ? props?.getAllVehicles.results.map((item, index) => (
-                  <Card url={item.url} key={index}>
+                  <Card withRateIcons={true} url={item.url} key={index}>
                     <Link
                       className="card-link"
                       to={`/vehicle/${getId(item.url)}`}

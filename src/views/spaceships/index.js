@@ -22,7 +22,7 @@ const SpaceShips = (props) => {
           <div className="details-wrapper">
             {props.getAllSpacehips?.results
               ? props.getAllSpacehips?.results.map((item, index) => (
-                  <Card url={item.url} key={index}>
+                  <Card withRateIcons={true} url={item.url} key={index}>
                     <Link
                       className="card-link"
                       to={`/spaceship/${getId(item.url)}`}

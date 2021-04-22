@@ -21,7 +21,7 @@ const Species = (props) => {
           <div className="details-wrapper">
             {props.getAllSpecies?.results
               ? props?.getAllSpecies.results.map((item, index) => (
-                  <Card url={item.url} key={index}>
+                  <Card withRateIcons={true} url={item.url} key={index}>
                     <Link
                       className="card-link"
                       to={`/specie/${getId(item.url)}`}

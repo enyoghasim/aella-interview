@@ -58,7 +58,7 @@ const Person = (props) => {
           }
           {
             (props.getOnePerson.films) ?
-              (<Card withRateIcons={true}>
+              (<Card>
                 <div className="character-header">Films</div>
                 {props.getOnePerson.films.map((item, index) => (
                   <div key={index} className="character">{item}</div>

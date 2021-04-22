@@ -21,7 +21,7 @@ const People = (props) => {
           <div className="details-wrapper">
             {props.getAllPeople.results
               ? props.getAllPeople.results.map((item, index) => (
-                  <Card url={item.url} key={index}>
+                  <Card withRateIcons={true} url={item.url} key={index}>
                     <Link
                       className="card-link"
                       to={`/person/${getId(item.url)}`}

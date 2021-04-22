@@ -21,7 +21,7 @@ const FilmList = (props) => {
           <div className="details-wrapper">
             {props.getAllFilms?.results
               ? props.getAllFilms.results.map((item, index) => (
-                  <Card url={item.url} key={index}>
+                  <Card withRateIcons={true} url={item.url} key={index}>
                     <Link className="card-link" to={`/film/${getId(item.url)}`}>
                       <div className="character-header">{item.title}</div>
                       <div className="character">
