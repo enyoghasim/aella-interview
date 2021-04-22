@@ -22,7 +22,11 @@ const Planets = (props) => {
           <div className="details-wrapper">
             {props.getAllPlanets?.results
               ? props.getAllPlanets?.results.map((item, index) => (
-                  <Card withRateIcons={true} url={item.url} key={index}>
+                  <Card
+                    withRateIcons={true}
+                    item={{ ...item, type: "planet" }}
+                    key={index}
+                  >
                     <Link
                       className="card-link"
                       to={`/planet/${getId(item.url)}`}
