@@ -6,7 +6,7 @@ import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 import { getSpaceship } from "./redux/thunk";
 import { starship, person, film } from "../../route";
 import "./index.css";
-import { getId } from "../../util/helpers";
+import { dataFormat, getId } from "../../util/helpers";
 
 const SpaceShip = (props) => {
   async function handleAPICallToServer(userData) {
@@ -27,7 +27,7 @@ const SpaceShip = (props) => {
               </div>
               <div className="film-description">
                 <div className="cargo_capacity">
-                  Cargo&nbsp;Capacity&nbsp;:{" "}
+                  Cargo&nbsp;Capacity&nbsp;:
                   {props.getOneSpaceShip.cargo_capacity}
                 </div>
                 <div className="consumables">
@@ -43,6 +43,12 @@ const SpaceShip = (props) => {
                 <div className="passengers">
                   Passengers&nbsp;On&nbsp;:{props.getOneSpaceShip.passengers}
                 </div>
+                <div className="mglt">
+                  MGLT&nbsp;:{props.getOneSpaceShip.MGLT}
+                </div>
+                <div className="length">
+                  Length&nbsp;:{props.getOneSpaceShip.length}
+                </div>
               </div>
             </div>
             <div className="right-section">
@@ -54,9 +60,32 @@ const SpaceShip = (props) => {
                   <span className="fa fa-bookmark"></span>
                 )}
               </div>
-              <div className="director">Directed By : John Hawking</div>
-              <div className="producer">Produced By : Corner cole</div>
-              <div className="release-date">Released On : 21-44-5890</div>
+              <div className="hyperdrive_rating">
+                Hyperdrive&nbsp;Rating&nbsp;:
+                {props.getOneSpaceShip.hyperdrive_rating}
+              </div>
+              <div className="max_atmosphering_speed">
+                Max&nbsp;Atmosphering&nbsp;Speed&nbsp;:
+                {props.getOneSpaceShip.max_atmosphering_speed}
+              </div>
+              <div className="model">
+                Model&nbsp;:
+                {props.getOneSpaceShip.model}
+              </div>
+              <div className="starship_class">
+                Starship&nbsp;Class&nbsp;:
+                {props.getOneSpaceShip.starship_class}
+              </div>
+              <div className="url">
+                URL&nbsp;:&nbsp;
+                {props.getOneSpaceShip.url}
+              </div>
+              <div className="edited">
+                Edited&nbsp;: {dataFormat(props.getOneSpaceShip.edited)}
+              </div>
+              <div className="created-date">
+                Created&nbsp;On&nbsp;:{dataFormat(props.getOneSpaceShip.created)}
+              </div>
             </div>
           </div>
         )}
