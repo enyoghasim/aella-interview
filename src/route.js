@@ -19,3 +19,12 @@ export const species = "species";
 export const films = "films";
 export const starship = "starships";
 export const vehicle = "vehicles";
+
+export const planet = "planet";
+export const person = "person";
+export const specie = "specie";
+export const film = "film";
+export const spaceship = "spaceship";
+export const vehicles = "vehicle";
+
+export const baseUrl = "http://localhost:3000/";
