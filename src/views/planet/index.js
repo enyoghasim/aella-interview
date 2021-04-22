@@ -4,6 +4,8 @@ import Card from "../../components/card/index";
 import { getPlanet } from "./redux/thunk";
 import { planets } from "../../route";
 import "./index.css";
+import CardLoder from "../../components/card/skelecton/index.card.skelecton";
+import { dataFormat } from "../../util/helpers";
 
 const Planet = (props) => {
   async function handleAPICallToServer(userData) {
@@ -21,12 +23,12 @@ const Planet = (props) => {
               {props.getOnePlanet && props.getOnePlanet.name}
             </div>
             <div className="film-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quis
-              quisquam fugit dolorum, rem beatae magnam culpa, voluptates harum
-              exercitationem dolore est reiciendis tempora. Eius architecto esse
-              suscipit deserunt quae numquam unde rem atque, quibusdam, iure
-              voluptate est maiores delectus aliquid distinctio voluptatibus
-              alias. Expedita ducimus ad explicabo dolores earum.
+            <div className="climate">Climate&nbsp;: {props.getOnePlanet.climate}</div>
+            <div className="diameter">Diameter: {props.getOnePlanet.diameter}</div>
+            <div className="gravity">Gravity:&nbsp;{props.getOnePlanet.gravity}</div>
+            <div className="orbital_period">Orbital&nbsp;Period:&nbsp;{props.getOnePlanet.orbital_period}</div>
+            <div className="created">Created:&nbsp;{dataFormat(props.getOnePlanet.created)}</div>
+            <div className="edited">Edited:{dataFormat(props.getOnePlanet.edited)}</div>
             </div>
           </div>
           <div className="right-section">
@@ -38,20 +40,32 @@ const Planet = (props) => {
                 <span className="fa fa-heart"></span>
               )}
             </div>
-            <div className="director">Directed By : John Hawking</div>
-            <div className="producer">Produced By : Corner cole</div>
-            <div className="release-date">Released On : 21-44-5890</div>
+            <div className="climate">Climate&nbsp;: {props.getOnePlanet.climate}</div>
+            <div className="surface_water">Surface Water: {props.getOnePlanet.surface_water}</div>
+            <div className="terrain">Terrain:&nbsp;{props.getOnePlanet.terrain}</div>
+            <div className="terrain">Url:&nbsp;{props.getOnePlanet.url}</div>
           </div>
         </div>
         <div className="details-wrapper">
-          <Card>
-            <div className="character-header">Vehicles</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-            <div className="character">https://starwars.com/ok.o</div>
-          </Card>
+          {
+            (props.getOnePlanet?.films) ?
+              (<Card>
+                <div className="character-header">Films</div>
+                {props.getOnePlanet.films.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+          {
+            (props.getOnePlanet?.residents) ?
+              (<Card>
+                <div className="character-header">Residents</div>
+                {props.getOnePlanet.residents.map((item, index) => (
+                  <div key={index} className="character">{item}</div>
+                ))}
+              </Card>) : <CardLoder />
+          }
+
         </div>
       </div>
     </>

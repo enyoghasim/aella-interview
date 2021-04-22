@@ -18,4 +18,4 @@ export const people = "people";
 export const species = "species";
 export const films = "films";
 export const starship = "starships";
-export const vehicle = "vehicle";
+export const vehicle = "vehicles";

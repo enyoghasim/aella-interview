@@ -28,9 +28,6 @@ const FilmList = (props) => {
                   >
                     <Link className="card-link" to={`/film/${getId(item.url)}`}>
                       <div className="character-header">{item.title}</div>
-                      <div className="character">
-                        EPISODE ID : {item.episode_id}
-                      </div>
                       <div className="character">{item.opening_crawl}</div>
                       <div className="footer-container">
                         <div className="footer-main-item">
@@ -45,7 +42,8 @@ const FilmList = (props) => {
                           <span className="label-span">Producer:</span>
                           {item.producer}
                         </div>
-                        <div className="footer-main-item">4</div>
+                        <div className="footer-main-item">
+                          <span className="label-span">Episode&nbsp;ID:</span>4</div>
                       </div>
                     </Link>
                   </Card>
