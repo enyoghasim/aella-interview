@@ -48,9 +48,9 @@ const Planet = (props) => {
             <div className="rating-wrapper-contain">
               Rate:
               {true ? (
-                <span className="fa fa-heart checked"></span>
+                <span className="fa fa-bookmark checked"></span>
               ) : (
-                <span className="fa fa-heart"></span>
+                <span className="fa fa-bookmark"></span>
               )}
             </div>
             <div className="climate">
@@ -64,9 +64,9 @@ const Planet = (props) => {
             </div>
             <div className="terrain">
               Url:&nbsp;
-              <Link
-                to={`/${planet}/${props.match.params.id}`}
-              >{`${baseUrl}${planet}/${props.match.params.id}`}</Link>
+              <Link to={`/${planet}/${props.match.params.id}`}>
+                {props.getOnePlanet.url}
+              </Link>
             </div>
           </div>
         </div>
@@ -76,9 +76,7 @@ const Planet = (props) => {
               <div className="character-header">Films</div>
               {props.getOnePlanet.films.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${film}/${getId(item)}`}
-                  >{`${baseUrl}${film}/${getId(item)}`}</Link>
+                  <Link to={`/${film}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
@@ -90,9 +88,7 @@ const Planet = (props) => {
               <div className="character-header">Residents</div>
               {props.getOnePlanet.residents.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${person}/${getId(item)}`}
-                  >{`${baseUrl}${person}/${getId(item)}`}</Link>
+                  <Link to={`/${person}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>

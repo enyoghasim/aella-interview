@@ -32,16 +32,16 @@ const Person = (props) => {
               {props.getOnePerson && props.getOnePerson.name}
             </div>
             <div className="film-description">
-              <div className="eye-color">
+              <div className="birth">
                 Birth&nbsp;Year&nbsp;: {props.getOnePerson.birth_year}
               </div>
-              <div className="homeworld">
+              <div className="hair">
                 Hair&nbsp;Color:&nbsp;{props.getOnePerson.hair_color}
               </div>
               <div className="created-date">
                 Mass&nbsp;:{props.getOnePerson.mass}
               </div>
-              <div className="height">
+              <div className="edited">
                 Edited&nbsp;: {dataFormat(props.getOnePerson.edited)}
               </div>
               <div className="created-date">
@@ -53,9 +53,9 @@ const Person = (props) => {
             <div className="rating-wrapper-contain">
               Rate:
               {true ? (
-                <span className="fa fa-heart checked"></span>
+                <span className="fa fa-bookmark checked"></span>
               ) : (
-                <span className="fa fa-heart"></span>
+                <span className="fa fa-bookmark"></span>
               )}
             </div>
             <div className="height">
@@ -66,11 +66,9 @@ const Person = (props) => {
             </div>
             <div className="homeworld">
               Homeworld:&nbsp;
-              <Link
-                to={`/${planet}/${getId(props.getOnePerson.homeworld)}`}
-              >{`${baseUrl}${planet}/${getId(
-                props.getOnePerson.homeworld
-              )}`}</Link>
+              <Link to={`/${planet}/${getId(props.getOnePerson.homeworld)}`}>
+                {props.getOnePerson.homeworld}
+              </Link>
             </div>
             <div className="homeworld">
               Gender:&nbsp;{props.getOnePerson.gender}
@@ -86,9 +84,7 @@ const Person = (props) => {
               <div className="character-header">Vehicles</div>
               {props.getOnePerson.vehicles.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${vehicles}/${getId(item)}`}
-                  >{`${baseUrl}${vehicles}/${getId(item)}`}</Link>
+                  <Link to={`/${vehicles}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
@@ -100,9 +96,7 @@ const Person = (props) => {
               <div className="character-header">Films</div>
               {props.getOnePerson.films.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${film}/${getId(item)}`}
-                  >{`${baseUrl}${film}/${getId(item)}`}</Link>
+                  <Link to={`/${film}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
@@ -115,9 +109,7 @@ const Person = (props) => {
               <div className="character-header">Starships</div>
               {props.getOnePerson.starships.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${spaceship}/${getId(item)}`}
-                  >{`${baseUrl}${spaceship}/${getId(item)}`}</Link>
+                  <Link to={`/${spaceship}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
@@ -130,9 +122,7 @@ const Person = (props) => {
               <div className="character-header">Species</div>
               {props.getOnePerson.species.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${specie}/${getId(item)}`}
-                  >{`${baseUrl}${specie}/${getId(item)}`}</Link>
+                  <Link to={`/${specie}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>

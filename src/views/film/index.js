@@ -39,9 +39,9 @@ const Film = (props) => {
             <div className="rating-wrapper-contain">
               Rate:
               {true ? (
-                <span className="fa fa-heart checked"></span>
+                <span className="fa fa-bookmark checked"></span>
               ) : (
-                <span className="fa fa-heart"></span>
+                <span className="fa fa-bookmark"></span>
               )}
             </div>
             <div className="episode_id">
@@ -61,9 +61,7 @@ const Film = (props) => {
               <div className="character-header">Species</div>
               {props.getFilm.species.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${specie}/${getId(item)}`}
-                  >{`${baseUrl}${specie}/${getId(item)}`}</Link>
+                  <Link to={`/${specie}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
@@ -75,9 +73,7 @@ const Film = (props) => {
               <div className="character-header">Vehicles</div>
               {props.getFilm.vehicles.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${vehicles}/${getId(item)}`}
-                  >{`${baseUrl}${vehicles}/${getId(item)}`}</Link>
+                  <Link to={`/${vehicles}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
@@ -89,9 +85,7 @@ const Film = (props) => {
               <div className="character-header">Starships</div>
               {props.getFilm.starships.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${spaceship}/${getId(item)}`}
-                  >{`${baseUrl}${spaceship}/${getId(item)}`}</Link>
+                  <Link to={`/${spaceship}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
@@ -103,9 +97,7 @@ const Film = (props) => {
               <div className="character-header">Planets</div>
               {props.getFilm.planets.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${planet}/${getId(item)}`}
-                  >{`${baseUrl}${planet}/${getId(item)}`}</Link>
+                  <Link to={`/${planet}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
@@ -117,9 +109,7 @@ const Film = (props) => {
               <div className="character-header">Characters</div>
               {props.getFilm.characters.map((item, index) => (
                 <div key={index} className="character">
-                  <Link
-                    to={`/${person}/${getId(item)}`}
-                  >{`${baseUrl}${person}/${getId(item)}`}</Link>
+                  <Link to={`/${person}/${getId(item)}`}>{item}</Link>
                 </div>
               ))}
             </Card>
