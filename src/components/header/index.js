@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-// import Card from "../card";
+import NavLink from "../../compositions/navLink";
 import "./index.css";
 import StarWarsLogo from "../../Asset/image/starwarslogo.png";
 import SearchComponent from "../../components/input/index";
@@ -17,6 +17,54 @@ import {
 } from "../../route";
 
 const Header = () => {
+  const [navLink, setnavLink] = useState([
+    {
+      path: homeRoute,
+      id: 1,
+      title: "HOME"
+    },
+    {
+      path: planetsRoute,
+      id: 2,
+      title: "PLANETS"
+    },
+    {
+      path: peoplesRoute,
+      id: 3,
+      title: "PEOPLE"
+    },
+    {
+      path: filmsRoute,
+      id: 4,
+      title: "FILMS"
+    },
+    {
+      path: vehiclesRoute,
+      id: 5,
+      title: "VEHICLES"
+    },
+    {
+      path: speciesRoute,
+      id: 6,
+      title: "SPECIES"
+    },
+    {
+      path: spaceShipsRoute,
+      id: 7,
+      title: "SPACESHIPS"
+    },
+    {
+      path: favouriteRoute,
+      id: 8,
+      title: "FAVOURITES"
+    },
+
+
+  ])
+
+  const handleNavClick = (item) => {
+    return item;
+  }
   return (
     <>
       <div className="navbar">
@@ -53,30 +101,19 @@ const Header = () => {
             </label>
           </div>
           <div className="navigation-area">
-            <div className="nav-link">
-              <Link className="link-list-item" to={homeRoute}>HOME</Link>
-            </div>
-            <div className="nav-link">
-              <Link className="link-list-item" to={planetsRoute}>PLANETS</Link>
-            </div>
-            <div className="nav-link">
-              <Link className="link-list-item" to={peoplesRoute}>PEOPLE</Link>
-            </div>
-            <div className="nav-link">
-              <Link className="link-list-item" to={filmsRoute}>FILMS</Link>
-            </div>
-            <div className="nav-link">
-              <Link className="link-list-item" to={vehiclesRoute}>VEHICLES</Link>
-            </div>
-            <div className="nav-link">
-              <Link className="link-list-item" to={speciesRoute}>SPECIES</Link>
-            </div>
-            <div className="nav-link">
-              <Link className="link-list-item" to={spaceShipsRoute}>SPACESHIPS</Link>
-            </div>
-            <div className="nav-link">
-              <Link className="link-list-item" to={favouriteRoute}>FAVOURITES</Link>
-            </div>
+            {
+              navLink.map((item, index) => (
+                <div
+                  className="nav-link">
+                  <NavLink
+                    key={index}
+                    activeClassName="is-nav-active"
+                    className="link-list-item"
+                    to={item.path}>{item.title}</NavLink>
+                </div>
+              ))
+            }
+
           </div>
         </div>
       </div>

@@ -7,7 +7,6 @@ import { getFilm } from "./redux/thunk";
 import { getId, checkFavourite, favouitesHandler } from "../../util/helpers";
 import {
   films,
-  film,
   specie,
   vehicles,
   spaceship,
@@ -18,23 +17,25 @@ import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
 const Film = (props) => {
-  async function handleAPICallToServer(userData) {
+  const handleAPICallToServer = async (userData) => {
     await props.fetchFilm(userData);
   }
   const [item, setItem] = useState({});
+  const [active, setActive] = useState(false);
+
   const handleClickChange = () => {
     setActive(!active);
     favouitesHandler(item);
   };
-  const [active, setActive] = useState(false);
+
 
   useEffect(() => {
     handleAPICallToServer(`${films}/${props.match.params.id}`);
-    console.log(">>>>>>>>", props);
     // setActive(checkFavourite(props.getFilm));
     // console.log(">>fav", checkFavourite(check));
     console.log("this is the item>>", item);
   }, []);
+
   return (
     <>
       <div className="films-page">
