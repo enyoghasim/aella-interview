@@ -1,1 +1,1 @@
-const GET_;
+export const GET_FAVOURITES = "GET_FAVOURITES";

@@ -1,4 +1,5 @@
 import { SET_ACTIVE } from "../components/card/redux/types";
+import { GET_FAVOURITES } from "../views/favourites/redux/types";
 
 export const dataFormat = (input) => {
   const date = new Date(input);
@@ -14,13 +15,14 @@ export const getId = (input) => {
   return list[list.length - 2];
 };
 
-export const favouitesHandler = (url) => {
+export const favouitesHandler = (url, props) => {
   const favourite = localStorage.getItem("favourites");
   const favourites = JSON.parse(favourite);
   let fav = [];
   if (favourites === null) {
     fav.push(url);
     localStorage.setItem("favourites", JSON.stringify(fav));
+    props.dispatch({ type: GET_FAVOURITES });
     return;
   }
   let push = true;
@@ -34,6 +36,7 @@ export const favouitesHandler = (url) => {
   });
   if (push) fav = [...fav, url];
   localStorage.setItem("favourites", JSON.stringify(fav));
+  props.dispatch({ type: GET_FAVOURITES });
 };
 
 export const checkFavourite = (item) => {
@@ -74,7 +77,7 @@ export const handleToastChange = (
   timer = 1000
 ) => {
   props.dispatch({ type: SET_ACTIVE, payload });
-  favouitesHandler(itemToChange);
+  favouitesHandler(itemToChange, props);
   setTimeout(() => {
     props.dispatch({
       type: SET_ACTIVE,

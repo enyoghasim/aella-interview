@@ -5,12 +5,12 @@ import { setPerson } from "./actions";
 export const getPerson = (url) => {
   return async (dispatch) => {
     try {
-      dispatch(setLoading(true))
+      dispatch(setLoading(true));
       const { data } = await Axios.handleGetRequest(url);
       dispatch(setPerson(data));
-      dispatch(setLoading(false))
+      dispatch(setLoading(false));
     } catch (err) {
-      dispatch(setLoading(err))
+      dispatch(setLoading(err));
       return err;
     }
   };

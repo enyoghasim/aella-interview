@@ -1,25 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Card from "../../components/card";
-import { getFavourites, getId } from "../../util/helpers";
+import { getId } from "../../util/helpers";
 import "./index.css";
 
-const Favourites = () => {
-  const [favourites, setFavourites] = useState(getFavourites());
-
+const Favourites = ({ favourites }) => {
   return (
     <>
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {favourites.length ? (
+            {favourites.length && favourites.length ? (
               favourites.map((item, index) => (
-                <Card
-                  onClick={() => console.log("hi")}
-                  withRateIcons={true}
-                  item={item}
-                  key={index}
-                >
+                <Card withRateIcons={true} item={item} key={item.url}>
                   <Link
                     className="card-link"
                     to={`${item.type}/${getId(item.url)}`}
@@ -33,9 +27,9 @@ const Favourites = () => {
               ))
             ) : (
               <div>
-                <h1>
+                <div className="warning-area">
                   PLEASE YOU HAVE NOT YET ADDED ANYTHING TO YOUR FAVOURITES
-                </h1>
+                </div>
               </div>
             )}
           </div>
@@ -44,5 +38,9 @@ const Favourites = () => {
     </>
   );
 };
-
-export default Favourites;
+const mapStateToProps = (state) => {
+  return {
+    favourites: state.favouritesReducer.favourites,
+  };
+};
+export default connect(mapStateToProps, null)(Favourites);
