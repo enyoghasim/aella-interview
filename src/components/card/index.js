@@ -6,15 +6,14 @@ import "./index.css";
 
 const Card = (props) => {
   const { children, item, customClass, withRateIcons } = props;
+  const check = item ? item : "";
+  const [active, setActive] = useState(checkFavourite(check));
   const handleClickChange = () => {
     const text = !active ? "ADDED TO FAVOURITES" : "REMOVED FROM FAVOURITES";
-
     setActive(!active);
     handleToastChange(props, { active: true, text }, item, 1000);
   };
 
-  const check = item ? item : "";
-  const [active, setActive] = useState(checkFavourite(check));
   return (
     <>
       <div className="characters-section">

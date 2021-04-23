@@ -4,15 +4,16 @@ import { connect } from "react-redux";
 import Card from "../../components/card/index";
 import { dataFormat, getId } from "../../util/helpers";
 import { getFilms } from "./redux/thunk";
-import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
+import { film, films } from "../../route";
+import "./index.css";
 
 const FilmList = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchFilms(userData);
   }
   useEffect(() => {
-    handleAPICallToServer("films");
+    handleAPICallToServer(films);
   }, []);
   return (
     <>
@@ -24,9 +25,12 @@ const FilmList = (props) => {
                   <Card
                     withRateIcons={true}
                     key={index}
-                    item={{ ...item, type: "film" }}
+                    item={{ ...item, type: film }}
                   >
-                    <Link className="card-link" to={`/film/${getId(item?.url)}`}>
+                    <Link
+                      className="card-link"
+                      to={`/${film}/${getId(item?.url)}`}
+                    >
                       <div className="character-header">{item?.title}</div>
                       <div className="character">{item?.opening_crawl}</div>
                       <div className="footer-container">
@@ -43,7 +47,8 @@ const FilmList = (props) => {
                           {item?.producer}
                         </div>
                         <div className="footer-main-item">
-                          <span className="label-span">Episode&nbsp;ID:</span>4</div>
+                          <span className="label-span">Episode&nbsp;ID:</span>4
+                        </div>
                       </div>
                     </Link>
                   </Card>
@@ -59,7 +64,7 @@ const FilmList = (props) => {
 const mapStateToProps = (state) => {
   return {
     getAllFilms: state.filmsReducer.films,
-    getLoader: state.loadingReducer.loading
+    getLoader: state.loadingReducer.loading,
   };
 };
 

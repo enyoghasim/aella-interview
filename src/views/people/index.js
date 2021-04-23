@@ -4,15 +4,16 @@ import { connect } from "react-redux";
 import { getPeople } from "./redux/thunk";
 import { getId } from "../../util/helpers";
 import Card from "../../components/card";
-import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
+import { people, person } from "../../route";
+import "./index.css";
 
 const People = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchPeople(userData);
   }
   useEffect(() => {
-    handleAPICallToServer("people");
+    handleAPICallToServer(people);
   }, []);
   return (
     <>
@@ -23,12 +24,12 @@ const People = (props) => {
               ? props.getAllPeople?.results.map((item, index) => (
                   <Card
                     withRateIcons={true}
-                    item={{ ...item, type: "person" }}
+                    item={{ ...item, type: person }}
                     key={index}
                   >
                     <Link
                       className="card-link"
-                      to={`/person/${getId(item.url)}`}
+                      to={`/${person}/${getId(item.url)}`}
                     >
                       <div className="character-header">{item.name}</div>
                       <div className="character">
@@ -66,7 +67,7 @@ const People = (props) => {
 const mapStateToProps = (state) => {
   return {
     getAllPeople: state.peopleReducer.people,
-    getLoader: state.loadingReducer.loading
+    getLoader: state.loadingReducer.loading,
   };
 };
 

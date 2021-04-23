@@ -6,13 +6,14 @@ import { getVehicles } from "./redux/thunk";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 import { dataFormat, getId } from "../../util/helpers";
+import { vehicle, vehicles } from "../../route";
 
 const Vehicles = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchVehicles(userData);
   }
   useEffect(() => {
-    handleAPICallToServer("vehicles");
+    handleAPICallToServer(vehicle);
   }, []);
 
   return (
@@ -29,7 +30,7 @@ const Vehicles = (props) => {
                   >
                     <Link
                       className="card-link"
-                      to={`/vehicle/${getId(item.url)}`}
+                      to={`/${vehicles}/${getId(item.url)}`}
                     >
                       <div className="character-header">{item.name}</div>
                       <div className="character">

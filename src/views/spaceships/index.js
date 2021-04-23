@@ -4,15 +4,16 @@ import { connect } from "react-redux";
 import Card from "../../components/card";
 import { dataFormat, getId } from "../../util/helpers";
 import { getSpaceships } from "./redux/thunk";
-import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
+import { starship, spaceship } from "../../route";
+import "./index.css";
 
 const SpaceShips = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchSpaceships(userData);
   }
   useEffect(() => {
-    handleAPICallToServer("starships");
+    handleAPICallToServer(starship);
   }, []);
 
   return (
@@ -24,12 +25,12 @@ const SpaceShips = (props) => {
               ? props.getAllSpacehips?.results.map((item, index) => (
                   <Card
                     withRateIcons={true}
-                    item={{ ...item, type: "spaceship" }}
+                    item={{ ...item, type: spaceship }}
                     key={index}
                   >
                     <Link
                       className="card-link"
-                      to={`/spaceship/${getId(item.url)}`}
+                      to={`/${spaceship}/${getId(item.url)}`}
                     >
                       <div className="character-header">
                         MANUFACTURER : {item.name}
