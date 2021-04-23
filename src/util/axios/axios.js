@@ -7,24 +7,24 @@ class Axios {
       console.log(response);
       return response;
     } catch (err) {
-      return err;
+      throw new Error(err);
     }
   };
 
   static handlePostRequest = async (path, payload) => {
     try {
-      const { data } = await API.post(`users/${path}`, payload);
+      const { data } = await API.post(path, payload);
       return data;
     } catch (err) {
-      return err;
+      throw new Error(err);
     }
   };
-  static handleDeleteRequest = async (payload) => {
+  static handleDeleteRequest = async (path, payload) => {
     try {
-      const { data } = await API.delete(`users/${payload}`);
+      const { data } = await API.delete(path, payload);
       return data;
     } catch (err) {
-      return err;
+      throw new Error(err);
     }
   };
 }
