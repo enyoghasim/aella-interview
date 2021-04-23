@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import NavLink from "../../compositions/navLink";
 import "./index.css";
@@ -17,6 +17,8 @@ import {
 } from "../../route";
 
 const Header = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [openNav, setOpenNav] = useState(false);
   const [navLink, setnavLink] = useState([
     {
       path: homeRoute,
@@ -59,7 +61,20 @@ const Header = () => {
       title: "FAVOURITES",
     },
   ]);
-
+  const toggleOpen = () => {
+    setOpenNav(!openNav);
+  };
+  useEffect(() => {
+    const handleSize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", () => {
+      handleSize();
+    });
+    return () => {
+      window.removeEventListener("resize", () => {
+        handleSize();
+      });
+    };
+  }, []);
   const handleNavClick = (item) => {
     return item;
   };
@@ -71,6 +86,7 @@ const Header = () => {
             <img className="starwars-logo" src={StarWarsLogo} alt="LOGO" />
           </div>
           <button
+            onClick={toggleOpen}
             className="Header-link btn-link js-details-target"
             type="button"
             aria-label="Toggle navigation"
@@ -92,7 +108,11 @@ const Header = () => {
           </button>
         </div>
         <div className="wrapper-dropdown-wrapper">
-          <div className="navigation-area">
+          <div
+            className={`navigation-area ${
+              width < 430 && !openNav ? "open" : ""
+            }`}
+          >
             {navLink.map((item, index) => (
               <div className="nav-link">
                 <NavLink
