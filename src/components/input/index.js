@@ -9,6 +9,7 @@ function SEARCHCOMPONENT({
   inputCustomClass,
   InputType,
   placeHolder,
+  change,
 }) {
   return (
     <>
@@ -16,6 +17,7 @@ function SEARCHCOMPONENT({
         className={`${inputCustomClass} search-input-text catalog-search-bar`}
         type={InputType}
         placeholder={placeHolder}
+        onChange={change}
       />
     </>
   );

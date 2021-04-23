@@ -6,6 +6,7 @@ import "./index.css";
 
 const Favourites = () => {
   const [favourites, setFavourites] = useState(getFavourites());
+
   return (
     <>
       <div className="films-page">
@@ -13,7 +14,12 @@ const Favourites = () => {
           <div className="details-wrapper">
             {favourites.length ? (
               favourites.map((item, index) => (
-                <Card withRateIcons={true} item={item} key={index}>
+                <Card
+                  onClick={() => console.log("hi")}
+                  withRateIcons={true}
+                  item={item}
+                  key={index}
+                >
                   <Link
                     className="card-link"
                     to={`${item.type}/${getId(item.url)}`}

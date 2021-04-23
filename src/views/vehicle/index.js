@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "../../components/card/index";
@@ -6,12 +6,22 @@ import "./index.css";
 import { getVehicle } from "./redux/thunk";
 import { vehicle, vehicles, person, film } from "../../route";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
-import { dataFormat, getId } from "../../util/helpers";
+import {
+  checkFavourite,
+  dataFormat,
+  favouitesHandler,
+  getId,
+} from "../../util/helpers";
 
 const Vehicle = (props) => {
+  const [active, setActive] = useState(false);
   async function handleAPICallToServer(userData) {
     await props.fetchVehicle(userData);
   }
+  const handleClickChange = () => {
+    setActive(!active);
+    favouitesHandler({ ...props.getVehicle, type: vehicles });
+  };
   useEffect(() => {
     handleAPICallToServer(`${vehicle}/${props.match.params.id}`);
   }, []);
@@ -51,10 +61,16 @@ const Vehicle = (props) => {
             <div className="right-section">
               <div className="rating-wrapper-contain">
                 Rate:
-                {true ? (
-                  <span className="fa fa-bookmark checked"></span>
+                {checkFavourite(props.getVehicle) ? (
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark checked"
+                  ></span>
                 ) : (
-                  <span className="fa fa-bookmark"></span>
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark"
+                  ></span>
                 )}
               </div>
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "../../components/card/index";
@@ -6,12 +6,22 @@ import { getPlanet } from "./redux/thunk";
 import { planets, planet, film, person } from "../../route";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
-import { dataFormat, getId } from "../../util/helpers";
+import {
+  dataFormat,
+  getId,
+  favouitesHandler,
+  checkFavourite,
+} from "../../util/helpers";
 
 const Planet = (props) => {
+  const [active, setActive] = useState(false);
   async function handleAPICallToServer(userData) {
     await props.fetchPlanet(userData);
   }
+  const handleClickChange = () => {
+    setActive(!active);
+    favouitesHandler({ ...props.getOnePlanet, type: "planet" });
+  };
   useEffect(() => {
     handleAPICallToServer(`${planets}/${props.match.params.id}`);
   }, []);
@@ -48,10 +58,16 @@ const Planet = (props) => {
             <div className="right-section">
               <div className="rating-wrapper-contain">
                 Rate:
-                {true ? (
-                  <span className="fa fa-bookmark checked"></span>
+                {checkFavourite(props.getOnePlanet) ? (
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark checked"
+                  ></span>
                 ) : (
-                  <span className="fa fa-bookmark"></span>
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark"
+                  ></span>
                 )}
               </div>
               <div className="climate">

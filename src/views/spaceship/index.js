@@ -1,17 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "../../components/card/index";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 import { getSpaceship } from "./redux/thunk";
-import { starship, person, film } from "../../route";
+import { starship, spaceship, person, film } from "../../route";
 import "./index.css";
-import { dataFormat, getId } from "../../util/helpers";
+import {
+  dataFormat,
+  getId,
+  checkFavourite,
+  favouitesHandler,
+} from "../../util/helpers";
 
 const SpaceShip = (props) => {
+  const [active, setActive] = useState(false);
   async function handleAPICallToServer(userData) {
     await props.fetchSpaceship(userData);
   }
+  const handleClickChange = () => {
+    setActive(!active);
+    favouitesHandler({ ...props.getOneSpaceShip, type: spaceship });
+  };
   useEffect(() => {
     handleAPICallToServer(`${starship}/${props.match.params.id}`);
   }, []);
@@ -54,10 +64,16 @@ const SpaceShip = (props) => {
             <div className="right-section">
               <div className="rating-wrapper-contain">
                 Rate:
-                {true ? (
-                  <span className="fa fa-bookmark checked"></span>
+                {checkFavourite(props.getOneSpaceShip) ? (
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark checked"
+                  ></span>
                 ) : (
-                  <span className="fa fa-bookmark"></span>
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark"
+                  ></span>
                 )}
               </div>
               <div className="hyperdrive_rating">
@@ -84,7 +100,8 @@ const SpaceShip = (props) => {
                 Edited&nbsp;: {dataFormat(props.getOneSpaceShip.edited)}
               </div>
               <div className="created-date">
-                Created&nbsp;On&nbsp;:{dataFormat(props.getOneSpaceShip.created)}
+                Created&nbsp;On&nbsp;:
+                {dataFormat(props.getOneSpaceShip.created)}
               </div>
             </div>
           </div>

@@ -21,50 +21,48 @@ const Header = () => {
     {
       path: homeRoute,
       id: 1,
-      title: "HOME"
+      title: "HOME",
     },
     {
       path: planetsRoute,
       id: 2,
-      title: "PLANETS"
+      title: "PLANETS",
     },
     {
       path: peoplesRoute,
       id: 3,
-      title: "PEOPLE"
+      title: "PEOPLE",
     },
     {
       path: filmsRoute,
       id: 4,
-      title: "FILMS"
+      title: "FILMS",
     },
     {
       path: vehiclesRoute,
       id: 5,
-      title: "VEHICLES"
+      title: "VEHICLES",
     },
     {
       path: speciesRoute,
       id: 6,
-      title: "SPECIES"
+      title: "SPECIES",
     },
     {
       path: spaceShipsRoute,
       id: 7,
-      title: "SPACESHIPS"
+      title: "SPACESHIPS",
     },
     {
       path: favouriteRoute,
       id: 8,
-      title: "FAVOURITES"
+      title: "FAVOURITES",
     },
-
-
-  ])
+  ]);
 
   const handleNavClick = (item) => {
     return item;
-  }
+  };
   return (
     <>
       <div className="navbar">
@@ -95,19 +93,18 @@ const Header = () => {
         </div>
         <div className="wrapper-dropdown-wrapper">
           <div className="navigation-area">
-            {
-              navLink.map((item, index) => (
-                <div
-                  className="nav-link">
-                  <NavLink
-                    key={index}
-                    activeClassName="is-nav-active"
-                    className="link-list-item"
-                    to={item.path}>{item.title}</NavLink>
-                </div>
-              ))
-            }
-
+            {navLink.map((item, index) => (
+              <div className="nav-link">
+                <NavLink
+                  key={index}
+                  activeClassName="is-nav-active"
+                  className="link-list-item"
+                  to={item.path}
+                >
+                  {item.title}
+                </NavLink>
+              </div>
+            ))}
           </div>
         </div>
       </div>

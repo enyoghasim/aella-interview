@@ -11,29 +11,25 @@ import {
   vehicles,
   spaceship,
   planet,
+  film,
   person,
 } from "../../route";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
 const Film = (props) => {
+  const [active, setActive] = useState(false);
   const handleAPICallToServer = async (userData) => {
     await props.fetchFilm(userData);
-  }
-  const [item, setItem] = useState({});
-  const [active, setActive] = useState(false);
+  };
 
   const handleClickChange = () => {
     setActive(!active);
-    favouitesHandler(item);
+    favouitesHandler({ ...props.getFilm, type: film });
   };
-
 
   useEffect(() => {
     handleAPICallToServer(`${films}/${props.match.params.id}`);
-    // setActive(checkFavourite(props.getFilm));
-    // console.log(">>fav", checkFavourite(check));
-    console.log("this is the item>>", item);
   }, []);
 
   return (
@@ -52,7 +48,7 @@ const Film = (props) => {
             <div className="right-section">
               <div className="rating-wrapper-contain">
                 Rate:
-                {active ? (
+                {checkFavourite(props.getFilm) ? (
                   <span
                     onClick={handleClickChange}
                     className="fa fa-bookmark checked"
