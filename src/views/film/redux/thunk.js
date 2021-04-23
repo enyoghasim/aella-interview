@@ -1,15 +1,16 @@
+import { setLoading } from "../../../redux/loading/actions";
 import Axios from "../../../util/axios/axios";
 import { setFilm } from "./actions";
 
 export const getFilm = (url) => {
   return async (dispatch) => {
     try {
-      // dispatch(setLoading)
       const { data } = await Axios.handleGetRequest(url);
-      // dispatch(setLoading)
       dispatch(setFilm(data));
-    } catch (error) {
-      return error;
+      dispatch(setLoading(false))
+    } catch (err) {
+      dispatch(setLoading(err))
+      return err;
     }
   };
 };

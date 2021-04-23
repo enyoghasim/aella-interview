@@ -19,7 +19,7 @@ const FilmList = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllFilms?.results
+            {props.getAllFilms?.results && !props.getLoader
               ? props.getAllFilms.results.map((item, index) => (
                   <Card
                     withRateIcons={true}
@@ -59,6 +59,7 @@ const FilmList = (props) => {
 const mapStateToProps = (state) => {
   return {
     getAllFilms: state.filmsReducer.films,
+    getLoader: state.loadingReducer.loading
   };
 };
 

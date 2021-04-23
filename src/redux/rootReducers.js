@@ -11,6 +11,7 @@ import specieReducer from "../views/specie/redux/reducer";
 import speciesReducer from "../views/species/redux/reducer";
 import vehicleReducer from "../views/vehicle/redux/reducer";
 import vehiclesReducer from "../views/vehicles/redux/reducer";
+import loadingReducer from "./loading/reducer";
 
 const rootReducer = combineReducers({
   filmReducer,
@@ -25,5 +26,6 @@ const rootReducer = combineReducers({
   speciesReducer,
   vehicleReducer,
   vehiclesReducer,
+  loadingReducer
 });
 export default rootReducer;
