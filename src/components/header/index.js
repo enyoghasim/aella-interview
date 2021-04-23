@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import NavLink from "../../compositions/navLink";
 import "./index.css";
@@ -15,7 +16,7 @@ import {
   vehiclesRoute,
 } from "../../route";
 
-const Header = () => {
+const Header = (props) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [openNav, setOpenNav] = useState(false);
   const [navLink, setnavLink] = useState([
@@ -79,7 +80,7 @@ const Header = () => {
   };
   return (
     <>
-      <div className="notify-pops">Notify the pops</div>
+      <div className="notify-pops">{props.toaster.toastText}</div>
       <div className="navbar">
         <div className="header-section-wrapper-top-main-md">
           <div className="image-area">
@@ -131,5 +132,9 @@ const Header = () => {
     </>
   );
 };
-
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    toaster: state.toastReducer,
+  };
+};
+export default connect(mapStateToProps, null)(Header);
