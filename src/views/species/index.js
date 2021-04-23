@@ -5,13 +5,14 @@ import Card from "../../components/card";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 import { getId } from "../../util/helpers";
 import { getSpecies } from "./redux/thunk";
+import { specie, species } from "../../route";
 
 const Species = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchSpecies(userData);
   }
   useEffect(() => {
-    handleAPICallToServer("species");
+    handleAPICallToServer(species);
   }, []);
 
   return (
@@ -23,12 +24,12 @@ const Species = (props) => {
               ? props?.getAllSpecies.results.map((item, index) => (
                   <Card
                     withRateIcons={true}
-                    item={{ ...item, type: "specie" }}
+                    item={{ ...item, type: species }}
                     key={index}
                   >
                     <Link
                       className="card-link"
-                      to={`/specie/${getId(item.url)}`}
+                      to={`/${specie}/${getId(item.url)}`}
                     >
                       <div className="character-header">{item.name}</div>
                       <div className="character">

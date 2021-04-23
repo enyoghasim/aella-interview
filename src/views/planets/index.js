@@ -4,31 +4,32 @@ import { connect } from "react-redux";
 import Card from "../../components/card";
 import { getPlanets } from "./redux/thunk";
 import { getId } from "../../util/helpers";
-import "./index.css";
+import { planet, planets } from "../../route";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
+import "./index.css";
 
 const Planets = (props) => {
   async function handleAPICallToServer(userData) {
     await props.fetchPlanets(userData);
   }
   useEffect(() => {
-    handleAPICallToServer("planets");
+    handleAPICallToServer(planets);
   }, []);
   return (
     <>
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {(props.getAllPlanets?.results && !props.getLoader)
+            {props.getAllPlanets?.results && !props.getLoader
               ? props.getAllPlanets?.results.map((item, index) => (
                   <Card
                     withRateIcons={true}
-                    item={{ ...item, type: "planet" }}
+                    item={{ ...item, type: planet }}
                     key={index}
                   >
                     <Link
                       className="card-link"
-                      to={`/planet/${getId(item.url)}`}
+                      to={`/${planet}/${getId(item.url)}`}
                     >
                       <div className="character-header">{item.name}</div>
                       <div className="character">
@@ -60,7 +61,7 @@ const Planets = (props) => {
 const mapStateToProps = (state) => {
   return {
     getAllPlanets: state.planetsReducer.planets,
-    getLoader: state.loadingReducer.loading
+    getLoader: state.loadingReducer.loading,
   };
 };
 
