@@ -9,22 +9,26 @@
   padding: 1rem;
 }
 
-.notify-pops{
+.notify-pops {
+  visibility: hidden;
   position: fixed;
-  bottom: 0px;
+  bottom: 30px;
   border: solid 1px #e6e6e6;
-  padding: 1rem .34rem;
+  padding: 1rem 0.34rem;
   display: flex;
   justify-content: center;
   background: #2e2e2e8f;
   color: #fff;
   font-weight: bold;
   border-radius: 4px;
-  width: 100%;
   opacity: 1;
   z-index: 1000;
 }
-
+.notify-pops.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
 .navigation-area {
   color: white;
   min-height: 40px;
@@ -33,6 +37,9 @@
   justify-content: center;
   width: 100%;
   max-width: 1000px;
+}
+.navigation-area.open {
+  display: flex;
 }
 
 .navigation-area .nav-link {
@@ -43,7 +50,7 @@
   align-items: center;
   text-align: center;
 }
-.is-nav-active{
+.is-nav-active {
   background: #89898961;
   padding: 1rem 2rem;
   border-radius: 2px;
@@ -53,7 +60,7 @@
   text-decoration: none;
   color: #fff;
   padding: 1rem;
-  margin: .3rem;
+  margin: 0.3rem;
   width: inherit;
 }
 
@@ -124,11 +131,55 @@
   fill: #fff;
 }
 
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .navigation-area {
     color: white;
     min-height: 40px;
-    display: flex;
+    display: none;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -171,7 +222,7 @@
   .navigation-area {
     color: white;
     min-height: 40px;
-    display: flex;
+    display: none;
     align-items: center;
     flex-direction: column;
     justify-content: center;

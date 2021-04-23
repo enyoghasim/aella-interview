@@ -35,14 +35,14 @@ const Film = (props) => {
   return (
     <>
       <div className="films-page">
-        {props.getFilm.title && (
+        {(!props.getLoader) && (
           <div className="film-details">
             <div className="left-section">
               <div className="header">
-                {props.getFilm && props.getFilm.title}
+                {props.getFilm?.title}
               </div>
               <div className="film-description">
-                {props.getFilm && props.getFilm.opening_crawl}
+                {props.getFilm?.opening_crawl}
               </div>
             </div>
             <div className="right-section">
@@ -64,7 +64,7 @@ const Film = (props) => {
                 Episode&nbsp;ID&nbsp;: {props.getFilm.episode_id}
               </div>
               <div className="director">
-                Director&nbsp;: {props.getFilm.director}
+                Director&nbsp;: {props.getFilm?.director}
               </div>
               <div className="producer">
                 Producer&nbsp;: {props.getFilm.producer}
@@ -73,7 +73,7 @@ const Film = (props) => {
           </div>
         )}
         <div className="details-wrapper">
-          {props.getFilm.species ? (
+          {props.getFilm.species && !props.getLoader ? (
             <Card>
               <div className="character-header">Species</div>
               {props.getFilm.species.map((item, index) => (
@@ -85,7 +85,7 @@ const Film = (props) => {
           ) : (
             <CardLoder />
           )}
-          {props.getFilm.vehicles ? (
+          {props.getFilm.vehicles && !props.getLoader ? (
             <Card>
               <div className="character-header">Vehicles</div>
               {props.getFilm.vehicles.map((item, index) => (
@@ -97,7 +97,7 @@ const Film = (props) => {
           ) : (
             <CardLoder />
           )}
-          {props.getFilm.starships ? (
+          {props.getFilm.starships && !props.getLoader ? (
             <Card>
               <div className="character-header">Starships</div>
               {props.getFilm.starships.map((item, index) => (
@@ -109,7 +109,7 @@ const Film = (props) => {
           ) : (
             <CardLoder />
           )}
-          {props.getFilm.planets ? (
+          {props.getFilm.planets && !props.getLoader ? (
             <Card>
               <div className="character-header">Planets</div>
               {props.getFilm.planets.map((item, index) => (
@@ -121,7 +121,7 @@ const Film = (props) => {
           ) : (
             <CardLoder />
           )}
-          {props.getFilm.characters ? (
+          {props.getFilm.characters && !props.getLoader ? (
             <Card>
               <div className="character-header">Characters</div>
               {props.getFilm.characters.map((item, index) => (
@@ -146,6 +146,7 @@ Film.propTypes = {
 const mapStateToProps = (state) => {
   return {
     getFilm: state.filmReducer.film,
+    getLoader: state.loadingReducer.loading
   };
 };
 const mapDispatchToProps = (dispatch) => {

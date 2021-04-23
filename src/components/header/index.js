@@ -80,7 +80,11 @@ const Header = (props) => {
   };
   return (
     <>
-      <div className="notify-pops">{props.toaster.toastText}</div>
+      {props.toaster.toastOpen && (
+        <div className={`notify-pops ${props.toaster.toastOpen ? "show" : ""}`}>
+          {props.toaster.toastText}
+        </div>
+      )}
       <div className="navbar">
         <div className="header-section-wrapper-top-main-md">
           <div className="image-area">
@@ -109,11 +113,7 @@ const Header = (props) => {
           </button>
         </div>
         <div className="wrapper-dropdown-wrapper">
-          <div
-            className={`navigation-area ${
-              width < 430 && !openNav ? "open" : ""
-            }`}
-          >
+          <div className={`navigation-area ${openNav ? "open" : ""}`}>
             {navLink.map((item, index) => (
               <div className="nav-link">
                 <NavLink

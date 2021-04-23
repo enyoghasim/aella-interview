@@ -12,6 +12,7 @@ import speciesReducer from "../views/species/redux/reducer";
 import vehicleReducer from "../views/vehicle/redux/reducer";
 import vehiclesReducer from "../views/vehicles/redux/reducer";
 import toastReducer from "../components/card/redux/reducer";
+import loadingReducer from "./loading/reducer";
 
 const rootReducer = combineReducers({
   filmReducer,
@@ -27,5 +28,6 @@ const rootReducer = combineReducers({
   vehicleReducer,
   vehiclesReducer,
   toastReducer,
+  loadingReducer,
 });
 export default rootReducer;

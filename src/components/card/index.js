@@ -13,7 +13,7 @@ const Card = ({ children, item, customClass, dispatch, withRateIcons }) => {
     dispatch({ type: SET_ACTIVE, payload: { active: true, text } });
     setTimeout(() => {
       dispatch({ type: SET_ACTIVE, payload: { active: false } });
-    }, 2000);
+    }, 1000);
   };
 
   const check = item ? item : "";
