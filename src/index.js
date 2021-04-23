@@ -39,27 +39,30 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+const InnerHtml = () => (
+  <Switch>
+    <Route exact path={homeRoute} component={LandingPage}></Route>
+    <Route path={planetsRoute} component={PlanetsPage}></Route>
+    <Route path={planetRoute} component={PlanetPage}></Route>
+    <Route path={peoplesRoute} component={PeoplesPage}></Route>
+    <Route path={peopleRoute} component={PersonPage}></Route>
+    <Route path={speciesRoute} component={SpeciesPage}></Route>
+    <Route path={specieRoute} component={SpeciePage}></Route>
+    <Route path={vehiclesRoute} component={VehiclesPage}></Route>
+    <Route path={vehicleRoute} component={VehiclePage}></Route>
+    <Route path={filmsRoute} component={FilmsPage}></Route>
+    <Route path={filmRoute} component={Film}></Route>
+    <Route path={spaceShipsRoute} component={SpaceShipsPage}></Route>
+    <Route path={spaceShipRoute} component={SpaceShipPage}></Route>
+    <Route path={favouriteRoute} component={FavouritesPage}></Route>
+  </Switch>
+)
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <React.StrictMode>
         <App>
-          <Switch>
-            <Route exact path={homeRoute} component={LandingPage}></Route>
-            <Route path={planetsRoute} component={PlanetsPage}></Route>
-            <Route path={planetRoute} component={PlanetPage}></Route>
-            <Route path={peoplesRoute} component={PeoplesPage}></Route>
-            <Route path={peopleRoute} component={PersonPage}></Route>
-            <Route path={speciesRoute} component={SpeciesPage}></Route>
-            <Route path={specieRoute} component={SpeciePage}></Route>
-            <Route path={vehiclesRoute} component={VehiclesPage}></Route>
-            <Route path={vehicleRoute} component={VehiclePage}></Route>
-            <Route path={filmsRoute} component={FilmsPage}></Route>
-            <Route path={filmRoute} component={Film}></Route>
-            <Route path={spaceShipsRoute} component={SpaceShipsPage}></Route>
-            <Route path={spaceShipRoute} component={SpaceShipPage}></Route>
-            <Route path={favouriteRoute} component={FavouritesPage}></Route>
-          </Switch>
+          {InnerHtml()}
         </App>
       </React.StrictMode>
     </Router>
