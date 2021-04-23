@@ -36,27 +36,27 @@ const Person = (props) => {
   return (
     <>
       <div className="films-page">
-        {props.getOnePerson.name && (
+        {!props.getLoader && (
           <div className="film-details">
             <div className="left-section">
               <div className="header">
-                {props.getOnePerson && props.getOnePerson.name}
+                {props.getOnePerson?.name}
               </div>
               <div className="film-description">
                 <div className="birth">
-                  Birth&nbsp;Year&nbsp;: {props.getOnePerson.birth_year}
+                  Birth&nbsp;Year&nbsp;: {props.getOnePerson?.birth_year}
                 </div>
                 <div className="hair">
-                  Hair&nbsp;Color:&nbsp;{props.getOnePerson.hair_color}
+                  Hair&nbsp;Color:&nbsp;{props.getOnePerson?.hair_color}
                 </div>
                 <div className="created-date">
                   Mass&nbsp;:{props.getOnePerson.mass}
                 </div>
                 <div className="edited">
-                  Edited&nbsp;: {dataFormat(props.getOnePerson.edited)}
+                  Edited&nbsp;: {dataFormat(props.getOnePerson?.edited)}
                 </div>
                 <div className="created-date">
-                  Created&nbsp;On&nbsp;:{dataFormat(props.getOnePerson.created)}
+                  Created&nbsp;On&nbsp;:{dataFormat(props.getOnePerson?.created)}
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@ const Person = (props) => {
               </div>
               <div className="homeworld">
                 Homeworld:&nbsp;
-                {props.getOnePerson?.homeworld ? (
+                {props.getOnePerson?.homeworld && !props.getLoader ? (
                   <Link
                     to={`/${planet}/${getId(props.getOnePerson?.homeworld)}`}
                   >
@@ -103,7 +103,7 @@ const Person = (props) => {
           </div>
         )}
         <div className="details-wrapper">
-          {props.getOnePerson.vehicles ? (
+          {props.getOnePerson.vehicles && !props.getLoader ? (
             <Card>
               <div className="character-header">Vehicles</div>
               {props.getOnePerson.vehicles.map((item, index) => (
@@ -115,7 +115,7 @@ const Person = (props) => {
           ) : (
             <CardLoder />
           )}
-          {props.getOnePerson.films ? (
+          {props.getOnePerson.films && !props.getLoader ? (
             <Card>
               <div className="character-header">Films</div>
               {props.getOnePerson.films.map((item, index) => (
@@ -128,7 +128,7 @@ const Person = (props) => {
             <CardLoder />
           )}
 
-          {props.getOnePerson.starships ? (
+          {props.getOnePerson.starships && !props.getLoader ? (
             <Card>
               <div className="character-header">Starships</div>
               {props.getOnePerson.starships.map((item, index) => (
@@ -141,7 +141,7 @@ const Person = (props) => {
             <CardLoder />
           )}
 
-          {props.getOnePerson.species ? (
+          {props.getOnePerson.species && !props.getLoader ? (
             <Card>
               <div className="character-header">Species</div>
               {props.getOnePerson.species.map((item, index) => (
@@ -162,6 +162,7 @@ const Person = (props) => {
 const mapStateToProps = (state) => {
   return {
     getOnePerson: state.personReducer.person,
+    getLoader: state.loadingReducer.loading
   };
 };
 

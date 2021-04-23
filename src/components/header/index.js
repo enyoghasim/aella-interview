@@ -75,9 +75,6 @@ const Header = (props) => {
       });
     };
   }, []);
-  const handleNavClick = (item) => {
-    return item;
-  };
   return (
     <>
       {props.toaster.toastOpen && (

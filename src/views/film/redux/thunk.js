@@ -5,6 +5,7 @@ import { setFilm } from "./actions";
 export const getFilm = (url) => {
   return async (dispatch) => {
     try {
+      dispatch(setLoading(true))
       const { data } = await Axios.handleGetRequest(url);
       dispatch(setFilm(data));
       dispatch(setLoading(false))
