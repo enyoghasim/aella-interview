@@ -40,7 +40,7 @@ const Film = (props) => {
   };
 
   useEffect(() => {
-    handleAPICallToServer(`${films}/${props.match.params.id}`);
+    handleAPICallToServer(`${films}/${props.match?.params?.id}`);
   }, []);
 
   return (

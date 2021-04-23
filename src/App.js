@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "./components/header";
 import "./App.css";
-import { checkPropTypes } from "prop-types";
+import PropTypes from 'prop-types';
 
-const App = ({ children, match }) => {
+const App = ({ children }) => {
   return (
     <>
       <Header />
@@ -11,5 +11,9 @@ const App = ({ children, match }) => {
     </>
   );
 };
+
+App.propTypes = {
+  children: PropTypes.element.isRequired
+}
 
 export default App;
