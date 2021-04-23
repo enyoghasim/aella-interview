@@ -26,21 +26,21 @@ const FilmList = (props) => {
                     key={index}
                     item={{ ...item, type: "film" }}
                   >
-                    <Link className="card-link" to={`/film/${getId(item.url)}`}>
-                      <div className="character-header">{item.title}</div>
-                      <div className="character">{item.opening_crawl}</div>
+                    <Link className="card-link" to={`/film/${getId(item?.url)}`}>
+                      <div className="character-header">{item?.title}</div>
+                      <div className="character">{item?.opening_crawl}</div>
                       <div className="footer-container">
                         <div className="footer-main-item">
                           <span className="label-span">Created:</span>
-                          {dataFormat(item.created)}
+                          {dataFormat(item?.created)}
                         </div>
                         <div className="footer-main-item">
                           <span className="label-span">Director:</span>
-                          {item.director}
+                          {item?.director}
                         </div>
                         <div className="footer-main-item">
                           <span className="label-span">Producer:</span>
-                          {item.producer}
+                          {item?.producer}
                         </div>
                         <div className="footer-main-item">
                           <span className="label-span">Episode&nbsp;ID:</span>4</div>

@@ -13,14 +13,13 @@ const Planets = (props) => {
   }
   useEffect(() => {
     handleAPICallToServer("planets");
-    console.log(props.getAllPlanets.results);
   }, []);
   return (
     <>
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllPlanets?.results
+            {(props.getAllPlanets?.results && !props.getLoader)
               ? props.getAllPlanets?.results.map((item, index) => (
                   <Card
                     withRateIcons={true}
@@ -61,6 +60,7 @@ const Planets = (props) => {
 const mapStateToProps = (state) => {
   return {
     getAllPlanets: state.planetsReducer.planets,
+    getLoader: state.loadingReducer.loading
   };
 };
 
