@@ -4,7 +4,12 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Card from "../../components/card/index";
 import { getFilm } from "./redux/thunk";
-import { getId, checkFavourite, favouitesHandler } from "../../util/helpers";
+import {
+  getId,
+  checkFavourite,
+  favouitesHandler,
+  handleToastChange,
+} from "../../util/helpers";
 import {
   films,
   specie,
@@ -24,8 +29,14 @@ const Film = (props) => {
   };
 
   const handleClickChange = () => {
+    const text = !active ? "ADDED TO FAVOURITES" : "REMOVED FROM FAVOURITES";
     setActive(!active);
-    favouitesHandler({ ...props.getFilm, type: film });
+    handleToastChange(
+      props,
+      { active: true, text },
+      { ...props.getFilm, type: film },
+      1000
+    );
   };
 
   useEffect(() => {
@@ -35,12 +46,10 @@ const Film = (props) => {
   return (
     <>
       <div className="films-page">
-        {(!props.getLoader) && (
+        {!props.getLoader && (
           <div className="film-details">
             <div className="left-section">
-              <div className="header">
-                {props.getFilm?.title}
-              </div>
+              <div className="header">{props.getFilm?.title}</div>
               <div className="film-description">
                 {props.getFilm?.opening_crawl}
               </div>
@@ -146,12 +155,14 @@ Film.propTypes = {
 const mapStateToProps = (state) => {
   return {
     getFilm: state.filmReducer.film,
-    getLoader: state.loadingReducer.loading
+    getLoader: state.loadingReducer.loading,
+    toastOpen: state.toastReducer.toastOpen,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchFilm: (payload) => dispatch(getFilm(payload)),
+    dispatch,
   };
 };
 

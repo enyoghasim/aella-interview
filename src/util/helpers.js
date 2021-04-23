@@ -1,3 +1,5 @@
+import { SET_ACTIVE } from "../components/card/redux/types";
+
 export const dataFormat = (input) => {
   const date = new Date(input);
   return [
@@ -63,4 +65,20 @@ export const getFavourites = () => {
     return [];
   }
   return favourites;
+};
+
+export const handleToastChange = (
+  props,
+  payload,
+  itemToChange,
+  timer = 1000
+) => {
+  props.dispatch({ type: SET_ACTIVE, payload });
+  favouitesHandler(itemToChange);
+  setTimeout(() => {
+    props.dispatch({
+      type: SET_ACTIVE,
+      payload: { ...payload, active: false },
+    });
+  }, timer);
 };

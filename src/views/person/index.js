@@ -16,8 +16,8 @@ import "./index.css";
 import {
   checkFavourite,
   dataFormat,
-  favouitesHandler,
   getId,
+  handleToastChange,
 } from "../../util/helpers";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
@@ -27,8 +27,14 @@ const Person = (props) => {
     await props.fetchPerson(userData);
   }
   const handleClickChange = () => {
+    const text = !active ? "ADDED TO FAVOURITES" : "REMOVED FROM FAVOURITES";
     setActive(!active);
-    favouitesHandler({ ...props.getOnePerson, type: person });
+    handleToastChange(
+      props,
+      { active: true, text },
+      { ...props.getOnePerson, type: person },
+      1000
+    );
   };
   useEffect(() => {
     handleAPICallToServer(`${people}/${props.match.params.id}`);
@@ -39,9 +45,7 @@ const Person = (props) => {
         {!props.getLoader && (
           <div className="film-details">
             <div className="left-section">
-              <div className="header">
-                {props.getOnePerson?.name}
-              </div>
+              <div className="header">{props.getOnePerson?.name}</div>
               <div className="film-description">
                 <div className="birth">
                   Birth&nbsp;Year&nbsp;: {props.getOnePerson?.birth_year}
@@ -56,7 +60,8 @@ const Person = (props) => {
                   Edited&nbsp;: {dataFormat(props.getOnePerson?.edited)}
                 </div>
                 <div className="created-date">
-                  Created&nbsp;On&nbsp;:{dataFormat(props.getOnePerson?.created)}
+                  Created&nbsp;On&nbsp;:
+                  {dataFormat(props.getOnePerson?.created)}
                 </div>
               </div>
             </div>
@@ -162,13 +167,14 @@ const Person = (props) => {
 const mapStateToProps = (state) => {
   return {
     getOnePerson: state.personReducer.person,
-    getLoader: state.loadingReducer.loading
+    getLoader: state.loadingReducer.loading,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPerson: (payload) => dispatch(getPerson(payload)),
+    dispatch,
   };
 };
 

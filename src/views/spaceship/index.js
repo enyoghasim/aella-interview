@@ -10,7 +10,7 @@ import {
   dataFormat,
   getId,
   checkFavourite,
-  favouitesHandler,
+  handleToastChange,
 } from "../../util/helpers";
 
 const SpaceShip = (props) => {
@@ -19,8 +19,14 @@ const SpaceShip = (props) => {
     await props.fetchSpaceship(userData);
   }
   const handleClickChange = () => {
+    const text = !active ? "ADDED TO FAVOURITES" : "REMOVED FROM FAVOURITES";
     setActive(!active);
-    favouitesHandler({ ...props.getOneSpaceShip, type: spaceship });
+    handleToastChange(
+      props,
+      { active: true, text },
+      { ...props.getOneSpaceShip, type: spaceship },
+      1000
+    );
   };
   useEffect(() => {
     handleAPICallToServer(`${starship}/${props.match.params.id}`);
@@ -148,6 +154,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchSpaceship: (payload) => dispatch(getSpaceship(payload)),
+    dispatch,
   };
 };
 

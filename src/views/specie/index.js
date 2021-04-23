@@ -9,8 +9,8 @@ import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 import {
   dataFormat,
   getId,
+  handleToastChange,
   checkFavourite,
-  favouitesHandler,
 } from "../../util/helpers";
 
 const Specie = (props) => {
@@ -19,8 +19,14 @@ const Specie = (props) => {
     await props.fetchSpecie(userData);
   }
   const handleClickChange = () => {
+    const text = !active ? "ADDED TO FAVOURITES" : "REMOVED FROM FAVOURITES";
     setActive(!active);
-    favouitesHandler({ ...props.getSpecie, type: specie });
+    handleToastChange(
+      props,
+      { active: true, text },
+      { ...props.getSpecie, type: specie },
+      1000
+    );
   };
 
   useEffect(() => {
@@ -144,6 +150,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchSpecie: (payload) => dispatch(getSpecie(payload)),
+    dispatch,
   };
 };
 

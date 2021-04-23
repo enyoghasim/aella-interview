@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Link } from "react-router-dom";
 import NavLink from "../../compositions/navLink";
 import "./index.css";
 import StarWarsLogo from "../../Asset/image/starwarslogo.png";
@@ -17,7 +16,6 @@ import {
 } from "../../route";
 
 const Header = (props) => {
-  const [width, setWidth] = useState(window.innerWidth);
   const [openNav, setOpenNav] = useState(false);
   const [navLink, setnavLink] = useState([
     {
@@ -64,17 +62,6 @@ const Header = (props) => {
   const toggleOpen = () => {
     setOpenNav(!openNav);
   };
-  useEffect(() => {
-    const handleSize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", () => {
-      handleSize();
-    });
-    return () => {
-      window.removeEventListener("resize", () => {
-        handleSize();
-      });
-    };
-  }, []);
   return (
     <>
       {props.toaster.toastOpen && (
@@ -112,7 +99,7 @@ const Header = (props) => {
         <div className="wrapper-dropdown-wrapper">
           <div className={`navigation-area ${openNav ? "open" : ""}`}>
             {navLink.map((item, index) => (
-              <div className="nav-link">
+              <div key={index} className="nav-link">
                 <NavLink
                   key={index}
                   activeClassName="is-nav-active"

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { favouitesHandler, checkFavourite } from "../../util/helpers";
+import { checkFavourite, handleToastChange } from "../../util/helpers";
 import "./index.css";
-import { SET_ACTIVE } from "./redux/types";
 
-const Card = ({ children, item, customClass, dispatch, withRateIcons }) => {
+const Card = (props) => {
+  const { children, item, customClass, withRateIcons } = props;
   const handleClickChange = () => {
     const text = !active ? "ADDED TO FAVOURITES" : "REMOVED FROM FAVOURITES";
+
     setActive(!active);
-    favouitesHandler(item);
-    dispatch({ type: SET_ACTIVE, payload: { active: true, text } });
-    setTimeout(() => {
-      dispatch({ type: SET_ACTIVE, payload: { active: false } });
-    }, 1000);
+    handleToastChange(props, { active: true, text }, item, 1000);
   };
 
   const check = item ? item : "";
