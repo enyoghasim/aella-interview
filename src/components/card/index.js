@@ -4,10 +4,14 @@ import { favouitesHandler, checkFavourite } from "../../util/helpers";
 import "./index.css";
 
 const Card = ({ children, item, customClass, withRateIcons }) => {
+
+
   const handleClickChange = () => {
     setActive(!active);
     favouitesHandler(item);
   };
+
+
   const check = item ? item : "";
   const [active, setActive] = useState(checkFavourite(check));
   return (
