@@ -85,11 +85,17 @@ const Film = (props) => {
           {props.getFilm.species && !props.getLoader ? (
             <Card>
               <div className="character-header">Species</div>
-              {props.getFilm.species.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${specie}/${getId(item)}`}>{item}</Link>
+              {props.getFilm.species.length ? (
+                props.getFilm.species.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${specie}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  PLEASE THERE IS CURRENTLY NO SPECIE ASSIGNED TO THIS FILM
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -97,11 +103,17 @@ const Film = (props) => {
           {props.getFilm.vehicles && !props.getLoader ? (
             <Card>
               <div className="character-header">Vehicles</div>
-              {props.getFilm.vehicles.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${vehicles}/${getId(item)}`}>{item}</Link>
+              {props.getFilm.vehicles.length ? (
+                props.getFilm.vehicles.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${vehicles}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  PLEASE THERE IS CURRENTLY NO VEHICLE ASSIGNED TO THIS FILM
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -109,11 +121,17 @@ const Film = (props) => {
           {props.getFilm.starships && !props.getLoader ? (
             <Card>
               <div className="character-header">Starships</div>
-              {props.getFilm.starships.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${spaceship}/${getId(item)}`}>{item}</Link>
+              {props.getFilm.starships.length ? (
+                props.getFilm.starships.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${spaceship}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  PLEASE THERE IS CURRENTLY NO STARSHIP ASSIGNED TO THIS FILM
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -133,11 +151,17 @@ const Film = (props) => {
           {props.getFilm.characters && !props.getLoader ? (
             <Card>
               <div className="character-header">Characters</div>
-              {props.getFilm.characters.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${person}/${getId(item)}`}>{item}</Link>
+              {props.getFilm.characters.length ? (
+                props.getFilm.characters.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${person}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  PLEASE THERE IS CURRENTLY NO PERSON ON THIS FILM
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />

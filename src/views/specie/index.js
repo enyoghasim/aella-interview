@@ -114,11 +114,15 @@ const Specie = (props) => {
           {props.getSpecie.films ? (
             <Card>
               <div className="character-header">Films</div>
-              {props.getSpecie.films.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${film}/${getId(item)}`}>{item}</Link>
-                </div>
-              ))}
+              {props.getSpecie.films.length ? (
+                props.getSpecie.films.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div>THIS SPECIE CURRENTLY HAS NO FILM</div>
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -126,11 +130,17 @@ const Specie = (props) => {
           {props.getSpecie.people ? (
             <Card>
               <div className="character-header">People</div>
-              {props.getSpecie.people.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+              {props.getSpecie.people.length ? (
+                props.getSpecie.people.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  NO PERSON HAVE BEEN FOUND TO BE A PART OF THIS SPECIE
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />

@@ -114,11 +114,17 @@ const Planet = (props) => {
           {props.getOnePlanet?.films && !props.getLoader ? (
             <Card>
               <div className="character-header">Films</div>
-              {props.getOnePlanet.films.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+              {props.getOnePlanet.films.length ? (
+                props.getOnePlanet.films.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  THIS PLANET DOES NO HAVE ANY FILMS
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -126,11 +132,17 @@ const Planet = (props) => {
           {props.getOnePlanet?.residents && !props.getLoader ? (
             <Card>
               <div className="character-header">Residents</div>
-              {props.getOnePlanet?.residents.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${person}/${getId(item)}`}>{item}</Link>
+              {props.getOnePlanet?.residents.length ? (
+                props.getOnePlanet?.residents.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${person}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  THIS PLANET DOES NOT HAVE ANY RESIDENT
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
