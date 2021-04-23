@@ -28,6 +28,6 @@ const rootReducer = combineReducers({
   vehicleReducer,
   vehiclesReducer,
   loadingReducer,
-  toastReducer
+  toastReducer,
 });
 export default rootReducer;

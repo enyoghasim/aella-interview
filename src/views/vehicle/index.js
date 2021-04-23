@@ -9,8 +9,8 @@ import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 import {
   checkFavourite,
   dataFormat,
-  favouitesHandler,
   getId,
+  handleToastChange,
 } from "../../util/helpers";
 
 const Vehicle = (props) => {
@@ -19,8 +19,14 @@ const Vehicle = (props) => {
     await props.fetchVehicle(userData);
   }
   const handleClickChange = () => {
+    const text = !active ? "ADDED TO FAVOURITES" : "REMOVED FROM FAVOURITES";
     setActive(!active);
-    favouitesHandler({ ...props.getVehicle, type: vehicles });
+    handleToastChange(
+      props,
+      { active: true, text },
+      { ...props.getVehicle, type: vehicles },
+      1000
+    );
   };
   useEffect(() => {
     handleAPICallToServer(`${vehicle}/${props.match.params.id}`);
@@ -139,6 +145,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchVehicle: (payload) => dispatch(getVehicle(payload)),
+    dispatch,
   };
 };
 

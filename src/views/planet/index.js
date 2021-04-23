@@ -9,8 +9,8 @@ import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 import {
   dataFormat,
   getId,
-  favouitesHandler,
   checkFavourite,
+  handleToastChange,
 } from "../../util/helpers";
 
 const Planet = (props) => {
@@ -19,8 +19,15 @@ const Planet = (props) => {
     await props.fetchPlanet(userData);
   }
   const handleClickChange = () => {
+    const text = !active ? "ADDED TO FAVOURITES" : "REMOVED FROM FAVOURITES";
+
     setActive(!active);
-    favouitesHandler({ ...props.getOnePlanet, type: "planet" });
+    handleToastChange(
+      props,
+      { active: true, text },
+      { ...props.getOnePlanet, type: planet },
+      1000
+    );
   };
   useEffect(() => {
     handleAPICallToServer(`${planets}/${props.match.params.id}`);
@@ -28,37 +35,35 @@ const Planet = (props) => {
   return (
     <>
       <div className="films-page">
-        {props.getOnePlanet.name && (
+        {!props.getLoader && (
           <div className="film-details">
             <div className="left-section">
-              <div className="header">
-                {props.getOnePlanet && props.getOnePlanet.name}
-              </div>
+              <div className="header">{props.getOnePlanet?.name}</div>
               <div className="film-description">
                 <div className="climate">
-                  Climate&nbsp;: {props.getOnePlanet.climate}
+                  Climate&nbsp;: {props.getOnePlanet?.climate}
                 </div>
                 <div className="diameter">
-                  Diameter: {props.getOnePlanet.diameter}
+                  Diameter: {props.getOnePlanet?.diameter}
                 </div>
                 <div className="gravity">
-                  Gravity:&nbsp;{props.getOnePlanet.gravity}
+                  Gravity:&nbsp;{props.getOnePlanet?.gravity}
                 </div>
                 <div className="orbital_period">
-                  Orbital&nbsp;Period:&nbsp;{props.getOnePlanet.orbital_period}
+                  Orbital&nbsp;Period:&nbsp;{props.getOnePlanet?.orbital_period}
                 </div>
                 <div className="created">
-                  Created:&nbsp;{dataFormat(props.getOnePlanet.created)}
+                  Created:&nbsp;{dataFormat(props.getOnePlanet?.created)}
                 </div>
                 <div className="edited">
-                  Edited:{dataFormat(props.getOnePlanet.edited)}
+                  Edited:{dataFormat(props.getOnePlanet?.edited)}
                 </div>
               </div>
             </div>
             <div className="right-section">
               <div className="rating-wrapper-contain">
                 Rate:
-                {checkFavourite(props.getOnePlanet) ? (
+                {checkFavourite(props?.getOnePlanet) ? (
                   <span
                     onClick={handleClickChange}
                     className="fa fa-bookmark checked"
@@ -71,13 +76,13 @@ const Planet = (props) => {
                 )}
               </div>
               <div className="climate">
-                Climate&nbsp;: {props.getOnePlanet.climate}
+                Climate&nbsp;: {props.getOnePlanet?.climate}
               </div>
               <div className="surface_water">
-                Surface Water: {props.getOnePlanet.surface_water}
+                Surface Water: {props.getOnePlanet?.surface_water}
               </div>
               <div className="terrain">
-                Terrain:&nbsp;{props.getOnePlanet.terrain}
+                Terrain:&nbsp;{props.getOnePlanet?.terrain}
               </div>
               <div className="terrain">
                 Url:&nbsp;
@@ -89,7 +94,7 @@ const Planet = (props) => {
           </div>
         )}
         <div className="details-wrapper">
-          {props.getOnePlanet?.films ? (
+          {props.getOnePlanet?.films && !props.getLoader ? (
             <Card>
               <div className="character-header">Films</div>
               {props.getOnePlanet.films.map((item, index) => (
@@ -101,10 +106,10 @@ const Planet = (props) => {
           ) : (
             <CardLoder />
           )}
-          {props.getOnePlanet?.residents ? (
+          {props.getOnePlanet?.residents && !props.getLoader ? (
             <Card>
               <div className="character-header">Residents</div>
-              {props.getOnePlanet.residents.map((item, index) => (
+              {props.getOnePlanet?.residents.map((item, index) => (
                 <div key={index} className="character">
                   <Link to={`/${person}/${getId(item)}`}>{item}</Link>
                 </div>
@@ -122,12 +127,14 @@ const Planet = (props) => {
 const mapStateToProps = (state) => {
   return {
     getOnePlanet: state.planetReducer.planet,
+    getLoader: state.loadingReducer.loading,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPlanet: (payload) => dispatch(getPlanet(payload)),
+    dispatch,
   };
 };
 
