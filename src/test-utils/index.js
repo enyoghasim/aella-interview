@@ -15,9 +15,7 @@ export const reduxify = (Component, props = {}, state = {}) => {
   return function reduxWrap() {
     return (
       <Provider store={testStore}>
-        {/* <ConnectedRouter history={history}> */}
           <Component {...props} />
-        {/* </ConnectedRouter> */}
       </Provider>
     );
   };

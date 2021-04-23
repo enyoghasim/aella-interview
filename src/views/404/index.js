@@ -1,12 +1,12 @@
 import React from "react";
 import "./index.css";
 
-const Landing = () => {
+const NotFound = () => {
   return (
     <>
-     
+     not found
     </>
   );
 };
 
-export default Landing;
+export default NotFound;
