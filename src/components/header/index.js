@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import NavLink from "../../compositions/navLink";
 import "./index.css";
 import StarWarsLogo from "../../Asset/image/starwarslogo.png";
+import { SET_NAV } from "./redux/types";
 
 import {
   favouriteRoute,
@@ -14,9 +15,9 @@ import {
   speciesRoute,
   vehiclesRoute,
 } from "../../route";
+import { useLocation } from "react-router";
 
 const Header = (props) => {
-  const [openNav, setOpenNav] = useState(false);
   const [navLink, setnavLink] = useState([
     {
       path: homeRoute,
@@ -59,9 +60,19 @@ const Header = (props) => {
       title: "FAVOURITES",
     },
   ]);
+  const usedLocation = useLocation();
+  const [location, setLocation] = useState(usedLocation.pathname);
+
   const toggleOpen = () => {
-    setOpenNav(!openNav);
+    props.dispatch({ type: SET_NAV, payload: !props.openNav });
   };
+
+  useEffect(() => {
+    if (location !== usedLocation.pathname) {
+      props.dispatch({ type: SET_NAV, payload: false });
+      setLocation(usedLocation.pathname);
+    }
+  }, []);
   return (
     <>
       {props.toaster.toastOpen && (
@@ -97,7 +108,7 @@ const Header = (props) => {
           </button>
         </div>
         <div className="wrapper-dropdown-wrapper">
-          <div className={`navigation-area ${openNav ? "open" : ""}`}>
+          <div className={`navigation-area ${props.openNav ? "open" : ""}`}>
             {navLink.map((item, index) => (
               <div key={index} className="nav-link">
                 <NavLink
@@ -119,6 +130,7 @@ const Header = (props) => {
 const mapStateToProps = (state) => {
   return {
     toaster: state.toastReducer,
+    openNav: state.headerReducer.open,
   };
 };
 export default connect(mapStateToProps, null)(Header);

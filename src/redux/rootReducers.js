@@ -14,6 +14,7 @@ import vehiclesReducer from "../views/vehicles/redux/reducer";
 import loadingReducer from "./loading/reducer";
 import toastReducer from "../components/card/redux/reducer";
 import favouritesReducer from "../views/favourites/redux/reducer";
+import headerReducer from "../components/header/redux/reducer";
 const rootReducer = combineReducers({
   filmReducer,
   filmsReducer,
@@ -30,5 +31,6 @@ const rootReducer = combineReducers({
   loadingReducer,
   toastReducer,
   favouritesReducer,
+  headerReducer,
 });
 export default rootReducer;
