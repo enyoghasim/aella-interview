@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 import { favouitesHandler, checkFavourite } from "../../util/helpers";
 import "./index.css";
 
-const Card = ({ children, reRender, item, customClass, withRateIcons }) => {
+const Card = ({ children, item, customClass, withRateIcons }) => {
   const handleClickChange = () => {
     setActive(!active);
     favouitesHandler(item);
-    if (reRender) reRender();
   };
   const check = item ? item : "";
   const [active, setActive] = useState(checkFavourite(check));

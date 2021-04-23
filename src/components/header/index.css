@@ -16,21 +16,29 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 .navigation-area .nav-link {
   list-style: none;
-  padding: 1rem 0px;
   display: flex;
   width: inherit;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+.is-nav-active{
+  background: #89898961;
+  padding: 1rem 2rem;
+  border-radius: 2px;
 }
 
 .link-list-item {
   text-decoration: none;
   color: #fff;
+  padding: 1rem;
+  margin: .3rem;
+  width: inherit;
 }
 
 .search-component {

@@ -7,34 +7,31 @@ import { getFilm } from "./redux/thunk";
 import { getId, checkFavourite, favouitesHandler } from "../../util/helpers";
 import {
   films,
-  film,
   specie,
   vehicles,
   spaceship,
   planet,
+  film,
   person,
 } from "../../route";
 import "./index.css";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
 
 const Film = (props) => {
-  async function handleAPICallToServer(userData) {
+  const [active, setActive] = useState(false);
+  const handleAPICallToServer = async (userData) => {
     await props.fetchFilm(userData);
-  }
-  const [item, setItem] = useState({});
+  };
+
   const handleClickChange = () => {
     setActive(!active);
-    favouitesHandler(item);
+    favouitesHandler({ ...props.getFilm, type: film });
   };
-  const [active, setActive] = useState(false);
 
   useEffect(() => {
     handleAPICallToServer(`${films}/${props.match.params.id}`);
-    console.log(">>>>>>>>", props);
-    // setActive(checkFavourite(props.getFilm));
-    // console.log(">>fav", checkFavourite(check));
-    console.log("this is the item>>", item);
   }, []);
+
   return (
     <>
       <div className="films-page">
@@ -51,7 +48,7 @@ const Film = (props) => {
             <div className="right-section">
               <div className="rating-wrapper-contain">
                 Rate:
-                {active ? (
+                {checkFavourite(props.getFilm) ? (
                   <span
                     onClick={handleClickChange}
                     className="fa fa-bookmark checked"

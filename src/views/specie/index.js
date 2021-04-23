@@ -1,24 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "../../components/card/index";
 import { getSpecie } from "./redux/thunk";
-import { species, film, planet, person, specie } from "../../route";
+import { species, film, planet, specie } from "../../route";
 import "./index.css";
 import { connect } from "react-redux";
 import CardLoder from "../../components/card/skelecton/index.card.skelecton";
-import { dataFormat, getId } from "../../util/helpers";
+import {
+  dataFormat,
+  getId,
+  checkFavourite,
+  favouitesHandler,
+} from "../../util/helpers";
 
 const Specie = (props) => {
+  const [active, setActive] = useState(false);
   async function handleAPICallToServer(userData) {
     await props.fetchSpecie(userData);
   }
+  const handleClickChange = () => {
+    setActive(!active);
+    favouitesHandler({ ...props.getSpecie, type: specie });
+  };
+
   useEffect(() => {
     handleAPICallToServer(`${species}/${props.match.params.id}`);
   }, []);
   return (
     <>
       <div className="films-page">
-        {props.getSpecie.homeworld && (
+        {props.getSpecie.name && (
           <div className="film-details">
             <div className="left-section">
               <div className="header">
@@ -49,10 +60,16 @@ const Specie = (props) => {
             <div className="right-section">
               <div className="rating-wrapper-contain">
                 Rate:
-                {true ? (
-                  <span className="fa fa-bookmark checked"></span>
+                {checkFavourite(props.getSpecie) ? (
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark checked"
+                  ></span>
                 ) : (
-                  <span className="fa fa-bookmark"></span>
+                  <span
+                    onClick={handleClickChange}
+                    className="fa fa-bookmark"
+                  ></span>
                 )}
               </div>
               <div className="homeworld">

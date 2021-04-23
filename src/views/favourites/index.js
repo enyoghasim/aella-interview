@@ -5,11 +5,8 @@ import { getFavourites, getId } from "../../util/helpers";
 import "./index.css";
 
 const Favourites = () => {
-  const [time, setTime] = useState(Date.now());
   const [favourites, setFavourites] = useState(getFavourites());
-  const reRender = () => {
-    setTime(Date.now());
-  };
+
   return (
     <>
       <div className="films-page">
@@ -18,7 +15,7 @@ const Favourites = () => {
             {favourites.length ? (
               favourites.map((item, index) => (
                 <Card
-                  reRender={reRender}
+                  onClick={() => console.log("hi")}
                   withRateIcons={true}
                   item={item}
                   key={index}
