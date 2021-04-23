@@ -18,11 +18,11 @@ const Vehicle = (props) => {
   return (
     <>
       <div className="films-page">
-        {props.getVehicle.name && (
+        {props.getVehicle?.name && (
           <div className="film-details">
             <div className="left-section">
               <div className="header">
-                {props.getVehicle && props.getVehicle.name}
+                {props.getVehicle && props.getVehicle?.name}
               </div>
               <div className="film-description">
                 <div className="url">

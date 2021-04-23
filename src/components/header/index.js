@@ -94,12 +94,6 @@ const Header = () => {
           </button>
         </div>
         <div className="wrapper-dropdown-wrapper">
-          <div className="search-component">
-            <label className="search-label-wrapper-contain">
-              <ButtonComponent btnCustomClassName="btn-custom-style" innerTextBtn="Search..." />
-              <SearchComponent inputCustomClass="search-component-input" placeHolder="Search..." />
-            </label>
-          </div>
           <div className="navigation-area">
             {
               navLink.map((item, index) => (

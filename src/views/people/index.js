@@ -19,8 +19,8 @@ const People = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props.getAllPeople.results
-              ? props.getAllPeople.results.map((item, index) => (
+            {props.getAllPeople?.results
+              ? props.getAllPeople?.results.map((item, index) => (
                   <Card
                     withRateIcons={true}
                     item={{ ...item, type: "person" }}
