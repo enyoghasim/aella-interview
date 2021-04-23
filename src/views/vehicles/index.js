@@ -20,8 +20,8 @@ const Vehicles = (props) => {
       <div className="films-page">
         <div className="film-details">
           <div className="details-wrapper">
-            {props?.getAllVehicles.results
-              ? props?.getAllVehicles.results.map((item, index) => (
+            {props?.getAllVehicles?.results
+              ? props?.getAllVehicles?.results.map((item, index) => (
                   <Card
                     withRateIcons={true}
                     item={{ ...item, type: "vehicle" }}

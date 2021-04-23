@@ -9,6 +9,22 @@
   padding: 1rem;
 }
 
+.notify-pops{
+  position: fixed;
+  bottom: 0px;
+  border: solid 1px #e6e6e6;
+  padding: 1rem .34rem;
+  display: flex;
+  justify-content: center;
+  background: #2e2e2e8f;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  width: 100%;
+  opacity: 1;
+  z-index: 1000;
+}
+
 .navigation-area {
   color: white;
   min-height: 40px;

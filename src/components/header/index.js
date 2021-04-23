@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import NavLink from "../../compositions/navLink";
 import "./index.css";
 import StarWarsLogo from "../../Asset/image/starwarslogo.png";
-import SearchComponent from "../../components/input/index";
-import ButtonComponent from "../../components/button/index";
+
 import {
   favouriteRoute,
   filmsRoute,
@@ -80,6 +79,7 @@ const Header = () => {
   };
   return (
     <>
+      <div className="notify-pops">Notify the pops</div>
       <div className="navbar">
         <div className="header-section-wrapper-top-main-md">
           <div className="image-area">
@@ -128,7 +128,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {/* <Card /> */}
     </>
   );
 };

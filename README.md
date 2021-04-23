@@ -1,70 +1,187 @@
-# Getting Started with Create React App
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://swapi.dev/">
+    <img src="./public/logo.png" alt="Logo" width="80" height="80">
+  </a>
+  <h3 align="center">STARWARS</h3>
+</p>
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[![Landing Page][product-screenshot]](https://store.luminskin.com/products?language=en)
 
-### `yarn build`
+### Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As this is a simple consume website for the Star Wars API - there are a few things a user is probably going to want to do.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.View all root types, and the resources inside them
+2.Click though and see a detailed breakdown of the information on each resource type
+3.Easily access other linked resources
+4.Favorite a resource type - this must persist after page refresh however it doesn't need to be stored on a server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Requirements
 
-### `yarn eject`
+1.The UI has to be responsive
+2.Loading states while the data is being fetched
+3.Test coverage report
+4.As important as the feature set is, keeping coding standards and code consistency is key
+5.Use react query or redux, whichever you are comfortable with.
+6.Add type support by migrating to TypeScript
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Design
+A good understanding of basic UX principles, and showing that user flow and key actions have been thought through thoroughly
+This is Star Wars isn't it? Have some fun!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Submission
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Push your code to a version control service such as github or gitlab and send a link to the shared repository to jordan@menskin.co
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Built With
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+* [React](https://reactjs.org/)
+* [jestjs](https://jestjs.io/docs/tutorial-react)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- GETTING STARTED -->
+## Getting Started
 
-### Analyzing the Bundle Size
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Prerequisites
 
-### Making a Progressive Web App
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Installation using NPM
 
-### Advanced Configuration
+1. Get to  [https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea](https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run unit test 
+   ```sh
+   npm run test:unit
+   ```
+5. Run lint 
+   ```sh
+   npm run lint
+   ```
+6. get the dist production build 
+   ```sh
+   npm run build
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Installation using Yarn
 
-### Deployment
+1. Get to  [https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea](https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea.git
+   ```
+3. Install NPM packages
+   ```sh
+   yarn install
+   ```
+4. Run unit test 
+   ```sh
+   yarn run test:unit
+   ```
+5. Run lint 
+   ```sh
+   yarn run lint
+   ```
+6. get the dist production build 
+   ```sh
+   yarn run build
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `yarn build` fails to minify
+<!-- USAGE EXAMPLES -->
+## Usage
+To Get the Flat run command below:
+### Building dist folder for deployment
+ production build 
+   ```sh
+   npm run build
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Jefferson . Ofobrukweta . O - [@https://www.linkedin.com/in/ofobrukweta-jeff-207506136/](https://www.linkedin.com/in/ofobrukweta-jeff-207506136/) - oghenerukevwejeff@gmail.com
+
+Project Link: [https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea](https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea)
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin-url]: https://www.linkedin.com/in/ofobrukweta-jeff-207506136/
+[product-screenshot]: images.readme/Lumin.png
+[product-precaching-config]: images/workbox_precaching.png
