@@ -4,12 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Card from "../../components/card/index";
 import { getFilm } from "./redux/thunk";
-import {
-  getId,
-  checkFavourite,
-  favouitesHandler,
-  handleToastChange,
-} from "../../util/helpers";
+import { getId, checkFavourite, handleToastChange } from "../../util/helpers";
 import {
   films,
   specie,
