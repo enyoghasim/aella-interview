@@ -111,11 +111,17 @@ const Person = (props) => {
           {props.getOnePerson.vehicles && !props.getLoader ? (
             <Card>
               <div className="character-header">Vehicles</div>
-              {props.getOnePerson.vehicles.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${vehicles}/${getId(item)}`}>{item}</Link>
+              {props.getOnePerson.vehicles.length ? (
+                props.getOnePerson.vehicles.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${vehicles}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  THIS PERSON DOES NOT HAVE ANY VEHICLE
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -123,11 +129,17 @@ const Person = (props) => {
           {props.getOnePerson.films && !props.getLoader ? (
             <Card>
               <div className="character-header">Films</div>
-              {props.getOnePerson.films.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+              {props.getOnePerson.films.length ? (
+                props.getOnePerson.films.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  THIS PERSON DOES NOT HAVE ANY FILMS
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -136,11 +148,17 @@ const Person = (props) => {
           {props.getOnePerson.starships && !props.getLoader ? (
             <Card>
               <div className="character-header">Starships</div>
-              {props.getOnePerson.starships.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${spaceship}/${getId(item)}`}>{item}</Link>
+              {props.getOnePerson.starships.length ? (
+                props.getOnePerson.starships.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${spaceship}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  THIS PERSON DOES NOT HAVE ANY STARSHIP
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -149,11 +167,17 @@ const Person = (props) => {
           {props.getOnePerson.species && !props.getLoader ? (
             <Card>
               <div className="character-header">Species</div>
-              {props.getOnePerson.species.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${specie}/${getId(item)}`}>{item}</Link>
+              {props.getOnePerson.species.length ? (
+                props.getOnePerson.species.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${specie}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  THIS PERSON CANNOT BE CLASSIFIED AS A SPECIE OF ANY TYPE
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />

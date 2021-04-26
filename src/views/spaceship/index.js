@@ -117,23 +117,35 @@ const SpaceShip = (props) => {
             {props.getOneSpaceShip.pilots ? (
               <Card>
                 <div className="character-header">Pilots</div>
-                {props.getOneSpaceShip.pilots.map((item, index) => (
-                  <div key={index} className="character">
-                    <Link to={`/${person}/${getId(item)}`}>{item}</Link>
+                {props.getOneSpaceShip.pilots.length ? (
+                  props.getOneSpaceShip.pilots.map((item, index) => (
+                    <div key={index} className="character">
+                      <Link to={`/${person}/${getId(item)}`}>{item}</Link>
+                    </div>
+                  ))
+                ) : (
+                  <div className="purple-text">
+                    THIS STARSHIP CURRENTLY HAS NO PILOTS
                   </div>
-                ))}
+                )}
               </Card>
             ) : (
               <CardLoder />
             )}
             {props.getOneSpaceShip.films ? (
               <Card>
-                <div className="character-header">People</div>
-                {props.getOneSpaceShip.films.map((item, index) => (
-                  <div key={index} className="character">
-                    <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+                <div className="character-header">Films</div>
+                {props.getOneSpaceShip.films.length ? (
+                  props.getOneSpaceShip.films.map((item, index) => (
+                    <div key={index} className="character">
+                      <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+                    </div>
+                  ))
+                ) : (
+                  <div className="purple-text">
+                    THIS STARSHIP HAS NOT BE FEATURED IN ANY MOVIE
                   </div>
-                ))}
+                )}
               </Card>
             ) : (
               <CardLoder />

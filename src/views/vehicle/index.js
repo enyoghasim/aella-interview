@@ -126,11 +126,17 @@ const Vehicle = (props) => {
           {props.getVehicle.pilots ? (
             <Card>
               <div className="character-header">Pilots</div>
-              {props.getVehicle.pilots.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${person}/${getId(item)}`}>{item}</Link>
+              {props.getVehicle.pilots.length ? (
+                props.getVehicle.pilots.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${person}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  THIS VEHICLE CURRENTLY HAS NO PILOTS
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
@@ -138,11 +144,17 @@ const Vehicle = (props) => {
           {props.getVehicle.films ? (
             <Card>
               <div className="character-header">Films</div>
-              {props.getVehicle.films.map((item, index) => (
-                <div key={index} className="character">
-                  <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+              {props.getVehicle.films.length ? (
+                props.getVehicle.films.map((item, index) => (
+                  <div key={index} className="character">
+                    <Link to={`/${film}/${getId(item)}`}>{item}</Link>
+                  </div>
+                ))
+              ) : (
+                <div className="purple-text">
+                  NO FILMS AVAILABLE FOR THIS VEHICLE
                 </div>
-              ))}
+              )}
             </Card>
           ) : (
             <CardLoder />
