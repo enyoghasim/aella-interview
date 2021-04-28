@@ -44,9 +44,10 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+<!--## About The Project-->
 
-[![Landing Page][product-screenshot]](https://store.luminskin.com/products?language=en)
+<!-- [![Landing Page][product-screenshot]](https://store.luminskin.com/products?language=en)-->
+
 
 ### Instructions
 
@@ -123,10 +124,10 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation using Yarn
 
-1. Get to  [https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea](https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea)
+1. Get to  [https://github.com/enyoghasim/aella-interview](https://github.com/enyoghasim/aella-interview)
 2. Clone the repo
    ```sh
-   git clone https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea.git
+   git clone https://github.com/enyoghasim/aella-interview
    ```
 3. Install NPM packages
    ```sh
@@ -172,16 +173,16 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-Jefferson . Ofobrukweta . O - [@https://www.linkedin.com/in/ofobrukweta-jeff-207506136/](https://www.linkedin.com/in/ofobrukweta-jeff-207506136/) - oghenerukevwejeff@gmail.com
+gift enyoghasim - [@https://www.linkedin.com/in/enyoghasim/](https://www.linkedin.com/in/enyoghasim/) - geezyenyoghasim@gmail.com
 
-Project Link: [https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea](https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea)
+<!--Project Link: [https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea](https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea)-->
 
 
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links 
 [linkedin-url]: https://www.linkedin.com/in/ofobrukweta-jeff-207506136/
 [product-screenshot]: images.readme/Lumin.png
-[product-precaching-config]: images/workbox_precaching.png
+[product-precaching-config]: images/workbox_precaching.png -->
