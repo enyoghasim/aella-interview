@@ -99,10 +99,10 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation using NPM
 
-1. Get to  [https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea](https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea)
+1. Get to  [https://github.com/enyoghasim/aella-interview/](https://github.com/enyoghasim/aella-interview/)
 2. Clone the repo
    ```sh
-   git clone https://github.com/jeff-ofobrukweta/Take_Home_Test-from_Pangaea.git
+   git clone https://github.com/enyoghasim/aella-interview/
    ```
 3. Install NPM packages
    ```sh
